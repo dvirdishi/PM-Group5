@@ -31,7 +31,7 @@ jobs:
           command: npm test
       - run:
           name: Run Lint
-          command: npm npm run lint
+          command: npm run lint
           
 
 workflows:
