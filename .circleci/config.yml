@@ -27,10 +27,12 @@ jobs:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
       - run:
-          name: Run tests and lint
-          command: 
-           npm test
-           npm run lint
+          name: Run tests
+          command: npm test
+      - run:
+          name: Run Lint
+          command: npm npm run lint
+          
 
 workflows:
   # Below is the definition of your workflow.
