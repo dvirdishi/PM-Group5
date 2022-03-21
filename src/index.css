@@ -1,15 +1,6 @@
 body {
-  /* margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
-}
-
-code {
-  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace; */
+  color: var(--clr-gray);
+  margin: 2rem;
 }
 
 .header {
@@ -80,22 +71,6 @@ code {
   background-color: grey;
   border: 7px solid black;
   border-radius: 20px;
-}
-
-.article {
-  text-align: center;
-  margin: 20px 20px 20px 20px;
-  float: left;
-  max-width: 28%;
-  max-height: 25%;
-  border: 7px solid black;
-  border-radius: 20px;
-  background-color: grey;
-}
-
-.article:hover {
-  color: white;
-  background: rgb(158, 42, 42);
 }
 
 @media (max-width: 500px) {
@@ -184,4 +159,81 @@ input[type="submit"]:hover {
   flex-direction: column;
   gap: 8px;
   margin: 10px;
+}
+
+/* /////////////////////////////////////////////// */
+/* /////////////////////////////////////////////// */
+/* /////////////////////////////////////////////// */
+/* /////////////////////////////////////////////// */
+/* /////////////////////////////////////////////// */
+
+:root {
+  --clr-primary: #651fff;
+  --clr-gray: #37474f;
+  --clr-gray-light: #b0bec5;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  justify-content: center;
+}
+
+.container {
+  overflow: hidden;
+  box-shadow: 0px 2px 8px 0px var(--clr-gray-light);
+  background-color: white;
+  text-align: center;
+  border-radius: 1rem;
+  position: relative;
+  margin: 1.5rem;
+}
+
+.banner-img {
+  position: absolute;
+  background-image: url(https://images.unsplash.com/photo-1582727657635-c771002bdada?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+  height: 10rem;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profile-img {
+  width: 8rem;
+  clip-path: circle(60px at center);
+  margin-top: 4.5rem;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.description {
+  margin: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.button {
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  padding: 1rem;
+  background: rgb(158, 42, 42);
+  cursor: pointer;
+}
+
+.button:hover {
+  color: white;
+  background: black;
 }

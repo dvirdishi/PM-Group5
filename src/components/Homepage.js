@@ -1,28 +1,46 @@
 import React from "react"
-import Logo from "../images/react-icon-small.png"
+import Ofek from "../images/Ofek.jpg"
+import Niran from "../images/Niran.jpg"
+import Dvir from "../images/Dvir.jpg"
+import Aviya from "../images/Aviya.jpg"
 
-export default function Homepage() 
-{
+export default function Homepage() {
     return (
-        <div>
-            <div className="article">
-                <img className="image2" src={Logo} alt=""></img>
-                <h2>Bla Bla1</h2>
-                <p>Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla.</p>
-            </div>
-            
-            <div className="article">
-                <img className="image2" src={Logo} alt=""></img>
-                <h2>Bla Bla2</h2>
-                <p>Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla.</p>
+        <div className="wrapper-grid">
+            <div className="container">
+                <div className='banner-img'></div>
+                <img src={Ofek} alt='profile image' className="profile-img"></img>                   
+                <h1 className="name">Ofek Elgozi</h1>
+                <p className="description">Hi there! My name is Anna and I am a book lover, traveler and professional blogger. Follow me to stay connected!</p>
+                <button className='button'>Book Appointment</button>
             </div>
 
-            <div className="article">
-                <img className="image2" src={Logo} alt=""></img>
-                <h2>Bla Bla3</h2>
-                <p>Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla BlaBla Bla Bla Bla.</p>
+            <div className="container">
+                <div className='banner-img'></div>
+                <img src={Niran} alt='profile image' className="profile-img"></img>                   
+                <h1 className="name">Niran Dishi</h1>
+                <p className="description">Hi there! My name is Anna and I am a book lover, traveler and professional blogger. Follow me to stay connected!</p>
+                <button className='button'>Book Appointment</button>
+            </div>
+
+            <div className="container">
+                <div className='banner-img'></div>
+                <img src={Dvir} alt='profile image' className="profile-img"></img>                   
+                <h1 className="name">Dvir Dishi</h1>
+                <p className="description">Hi there! My name is Anna and I am a book lover, traveler and professional blogger. Follow me to stay connected!</p>
+                <button className='button'>Book Appointment</button>
+            </div>
+
+            <div className="container">
+                <div className='banner-img'></div>
+                <img src={Aviya} alt='profile image' className="profile-img"></img>                   
+                <h1 className="name">Aviya </h1>
+                <p className="description">Hi there! My name is Anna and I am a book lover, traveler and professional blogger. Follow me to stay connected!</p>
+                <button className='button'>Book Appointment</button>
             </div>
         </div>
     )
 }
+
+
 
