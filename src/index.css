@@ -5,9 +5,11 @@ body {
 
 .header {
   text-align: center;
-  background-image: url('https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg');
-  background-size: cover;
+  background-image: url("././images/background.jpg");
+  background-size: 100%;
   background-color: grey;
+  background-repeat: no-repeat;
+  background-position: auto;
 }
 
 .a {
@@ -24,12 +26,12 @@ body {
   font-size: 1.3rem;
   line-height: 1em;
   border-radius: var(--radius);
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .btn:hover {
   color: white;
-  background: black;
+  background: rgb(86, 174, 233);
 }
 
 .h1 {
@@ -38,10 +40,9 @@ body {
 
 .image {
   margin: 40px 0px 0px 0px;
-  border: 7px solid white;
-  border-radius: 20px;
   max-height: 150px;
   max-width: 250px;
+  clip-path: circle(80px at center);
 }
 
 .image2 {
@@ -53,14 +54,13 @@ body {
 }
 
 .ul {
-  padding: 10px;
-  background: rgba(0,0,0,0.5);
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.70);
 }
 
 .li {
   display: inline;
   padding: 0px 10px 0px 10px;
-  
 }
 
 .login {
@@ -82,15 +82,6 @@ body {
       padding: 5px;
       display: block;
   }
-}
-
-.body {
-  text-align: center;
-  background: url("https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg");
-  background-size:cover;
-  background-position:center;
-  color: white;
-  font-family: helvetica;
 }
 
 .p {
@@ -119,14 +110,14 @@ input[type="submit"] {
   margin-top: 10px;
   cursor: pointer;
   font-size: 15px;
-  background: rgb(158, 42, 42);
-  border: 1px solid rgb(158, 42, 42);
+  background: rgb(86, 174, 233);
+  border: 1px solid rgb(86, 174, 233);
   color: #fff;
   padding: 10px 20px;
 }
 
 input[type="submit"]:hover {
-  background: black;
+  background: grey;
 }
 
 .button-container {
@@ -198,8 +189,8 @@ input[type="submit"]:hover {
 
 .banner-img {
   position: absolute;
-  background-image: url(https://images.unsplash.com/photo-1582727657635-c771002bdada?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
-  height: 10rem;
+  background-image: url("././images/banner.png");
+  height: 12rem;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -229,11 +220,11 @@ input[type="submit"]:hover {
   font-weight: bold;
   color: white;
   padding: 1rem;
-  background: rgb(158, 42, 42);
+  background: rgb(86, 174, 233);
   cursor: pointer;
 }
 
 .button:hover {
   color: white;
-  background: black;
+  background: grey;
 }
