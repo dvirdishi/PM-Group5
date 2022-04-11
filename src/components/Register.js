@@ -19,14 +19,8 @@ function Register()
   
   useEffect(() => {
     if (loading) return;
-    if (user) navigate.replace("/dashboard");
+    if (user) navigate("/dashboard");
   }, [user, loading]);
-
-  function actions() 
-  {
-    register();
-    navigate("/");
-  }
 
   return (
     <div className="register">
@@ -52,7 +46,7 @@ function Register()
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button className="register__btn" onClick={actions}>
+        <button className="register__btn" onClick={register}>
           Register
         </button>
         <button
@@ -62,7 +56,7 @@ function Register()
           Register with Google
         </button>
         <div>
-          Already have an account? <Link to="/">Login</Link> now.
+          Already have an account? <Link to="/login">Login</Link> now.
         </div>
       </div>
     </div>
