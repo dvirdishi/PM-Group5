@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
-import Signin from './components/Signin';
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Reset from "./components/Reset";
 import './index.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() 
 {
@@ -12,10 +14,12 @@ function App()
         <Router>
             <div>
                 <Navbar />
-                <Switch>
-                    <Route path="/" exact component={Homepage} />
-                    <Route path="/signin" component={Signin} />
-                </Switch>
+                <Routes>
+                    <Route exact path="/" element={<Homepage />} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/register" element={<Register />} />
+                    <Route exact path="/reset" element={<Reset />} />
+                </Routes>
             </div>
         </Router>
     )

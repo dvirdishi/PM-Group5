@@ -11,7 +11,7 @@ export default function Navbar()
                 <Link to="/">
                 <button className="btn"><b><li className="li">Homepage</li></b></button>
                 </Link>
-                <Link to="/signin">
+                <Link to="/login">
                 <button className="btn"><b><li className="li">Sign-in</li></b></button>
                 </Link>
             </ul>
