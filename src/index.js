@@ -5,6 +5,7 @@ import Homepage from './components/Homepage';
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Reset from "./components/Reset";
+import Dashboard from "./components/Dashboard";
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App()
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
                     <Route exact path="/reset" element={<Reset />} />
+                    <Route exact path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </div>
         </Router>
