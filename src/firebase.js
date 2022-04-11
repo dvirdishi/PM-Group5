@@ -42,7 +42,6 @@ const signInWithGoogle = async () => {
         name: user.displayName,
         authProvider: "google",
         email: user.email,
-        password: user.password,
       });
     }
   } catch (err) {
