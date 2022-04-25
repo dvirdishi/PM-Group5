@@ -177,6 +177,36 @@ body {
 
 /* //////////////Dashboard/////////////// */
 
+.dashboard {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #dcdcdc;
+  padding: 30px;
+}
+.dashboard__btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  border: none;
+  color: white;
+  background-color: black;
+}
+.dashboard div {
+  margin-top: 7px;
+}
+
+/* //////////////Dashboard/////////////// */
+
+/* //////////////User/////////////// */
+
 div.container_dash {
   height: 100%;
   display: grid;
@@ -203,7 +233,7 @@ div.group_dash {
 }
 
 
-label_dash {
+.label_dash {
   margin: 0px;
 
 }
@@ -243,7 +273,7 @@ button_dash:hover {
   cursor: pointer;
 }
 
-/* //////////////Dashboard/////////////// */
+/* //////////////User/////////////// */
 
 /* //////////////Register/////////////// */
 
