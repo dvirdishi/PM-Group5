@@ -1,7 +1,7 @@
 import React, { useState } from "react";// useeffect
 //import { useAuthState } from "react-firebase-hooks/auth";
 //import { useNavigate } from "react-router-dom";
-import "./Dashboard.css";
+import "../index.css";
 import EditableUserProfile from './EditableUserProfile';
 import UserProfile from './UserProfile';
 //import { auth, db } from "../firebase";

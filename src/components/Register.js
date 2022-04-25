@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth, registerWithEmailAndPassword, signInWithGoogle
 } from "../firebase";
-import "./Register.css";
+import "../index.css";
 function Register() 
 {
   const [email, setEmail] = useState("");
