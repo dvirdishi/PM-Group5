@@ -6,6 +6,8 @@ import { auth} from "../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { db} from "../firebase";
 
+
+
 function renderMonthOptions() {
     return months.getMonths().map( (m, i) => {
         return <option
@@ -21,10 +23,7 @@ function bound(value, floor, ceil) {
     return Math.min(ceil, Math.max(value, floor));
 }
 
-export default function EditableUserProfile({
-                                                stored,
-                                                editCompleteCallback
-                                            }) {
+export default function EditableUserProfile({stored,editCompleteCallback}) {
 
     console.log("Edit User Profile");
     const [nameos, setName] = useState(stored.nameos);
@@ -66,6 +65,11 @@ export default function EditableUserProfile({
 
 
     const maxDay = months.getMaxDays(month);
+
+    function handleCancelClicked() {
+        console.log("Cancelled");
+        editCompleteCallback(null);
+    }
     function handleSaveClicked() {
         console.log("Saved");
         updateDocument();
@@ -129,8 +133,8 @@ export default function EditableUserProfile({
             />
         </Group>
         </div>
-
-        <div style={{margin: "-15px"}}>
+<br></br>
+        <div>
         <h1_dash>Clinic Settings</h1_dash>
         <Group>
             <h2_dash>Address:</h2_dash>
@@ -165,8 +169,9 @@ export default function EditableUserProfile({
             />
         </Group>
         </div>
-            <div>
-                <Group><button_dash onClick={handleSaveClicked}>Save</button_dash></Group>
+            <div className="btn-group-dash">
+                <button onClick={handleSaveClicked}>Save</button>
+                <button onClick={handleCancelClicked}>Cancel</button>
             </div>
     </div>
     );
