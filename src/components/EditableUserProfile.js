@@ -43,7 +43,7 @@ export default function EditableUserProfile({
     const updateDocument = async () => 
     {
         {
-          const ref = doc(db, "users", "1DAL7ghq9XNTQet2aEBR25go9JW2");
+          const ref = doc(db, "users", user.uid);
           await updateDoc(ref, 
             {
                 name: nameos,
