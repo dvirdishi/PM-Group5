@@ -46,7 +46,7 @@ const pickSlotTimes = times => {
     return timesPicked.sort();
 };
 
-const Schedule = props => {
+const Schedule = () => {
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [bookingTimes, setBookingTimes] = useState([]);
@@ -88,8 +88,7 @@ const Schedule = props => {
                             <button
                                 key={time}
                                 className="k-button k-mb-4"
-                                onClick={e => setSelectedTimeSlot(time) }
-
+                                onClick={() => setSelectedTimeSlot(time) }
                             >
                                 {time}
                             </button>
