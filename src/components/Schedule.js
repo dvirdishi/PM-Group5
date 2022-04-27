@@ -1,6 +1,5 @@
 import { Calendar } from "@progress/kendo-react-dateinputs";
-import { useEffect, useRef, useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 
 
 let ButEnable=1;
@@ -80,7 +79,6 @@ const Schedule = props => {
     return (
         <div className="k-my-8">
             <div className="k-mb-4 k-font-weight-bold">Appointments Schedule </div>
-
             <div className="k-flex k-display-flex k-mb-4">
                 <Calendar value={bookingDate} onChange={onDateChange}  min={new Date(today.getFullYear(), today.getMonth(), today.getDate())} />
 
@@ -106,15 +104,8 @@ const Schedule = props => {
             {bookingDate && selectedTimeSlot ? (
                 <div>
                     Selected slot: {bookingDate.toDateString()} at {selectedTimeSlot}
-
                 </div>
-
-
-
-
             ) : null}
-
-
             {
                 <div>
                     <button id="Book an appointment " disabled={ButEnable}>Book an appointment </button>
