@@ -8,7 +8,9 @@ import Register from "./components/Register";
 import Reset from "./components/Reset";
 import Dashboard from "./components/Dashboard";
 import User from "./components/User";
-import Schedule from "./components/Schedule"; 
+import Schedule from "./components/Schedule";
+import Mail from "./components/Mail";
+import * as serviceWorker from './components/serviceWorker';
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -26,7 +28,8 @@ function App()
                     <Route exact path="/reset" element={<Reset />} />
                     <Route exact path="/dashboard" element={<Dashboard />} />
                     <Route exact path="/profile" element={<User />} />
-                    <Route exact path="/Schedule" element={<Schedule />} /> 
+                    <Route exact path="/Schedule" element={<Schedule />} />
+                    <Route exact path="/contact" element={<Mail />} />
                 </Routes>
             </div>
         </Router>
@@ -35,3 +38,4 @@ function App()
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
+serviceWorker.unregister();

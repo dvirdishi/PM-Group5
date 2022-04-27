@@ -74,7 +74,14 @@ const Schedule = () => {
     const onDateChange = e => {
         setSelectedTimeSlot(null);
         setBookingDate(e.value);
+        ButEnable=1;
     };
+
+    function disable_enable_button(time)
+    {
+        setSelectedTimeSlot(time);
+        ButEnable=0;
+    }
 
     return (
         <div className="k-my-8">
@@ -88,7 +95,7 @@ const Schedule = () => {
                             <button
                                 key={time}
                                 className="k-button k-mb-4"
-                                onClick={() => setSelectedTimeSlot(time) }
+                                onClick={() => disable_enable_button(time)}
                             >
                                 {time}
                             </button>
