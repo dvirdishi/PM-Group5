@@ -1,7 +1,10 @@
-//add variable in lines 33, 42, 89
 import React,{ useState, useEffect } from 'react';
 import Group from './Group';
 import { months } from '../tools';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth} from "../firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { db} from "../firebase";
 
 function renderMonthOptions() {
     return months.getMonths().map( (m, i) => {
@@ -24,33 +27,56 @@ export default function EditableUserProfile({
                                             }) {
 
     console.log("Edit User Profile");
-// add as const variable
-    const [name, setName] = useState(stored.name);
+    const [nameos, setName] = useState(stored.nameos);
     const [month, setMonth] = useState(stored.month);
     const [day, setDay] = useState(stored.day);
     const [year, setYear] = useState(stored.year);
     const [email, setEmail] = useState(stored.email);
-    const [oldPassword, setOldPass] = useState(stored.oldPassword);
-    const [newPassword, setNewPass] = useState(stored.newPassword);
-    const [rePassword, setRePass] = useState(stored.rePassword);
     const [address, setAddress] = useState(stored.address);
-    const [phone, setPhone] = useState(stored.phone);
+    const [private_phone, setPhone] = useState(stored.private_phone);
     const [speciality, setSpec] = useState(stored.speciality);
     const [treatment, setTreat] = useState(stored.treatment);
-// add as const variable
+    const [clinic_phone, setClinicPhone] = useState(stored.clinic_phone);
+
+    const [user, loading] = useAuthState(auth);
+
+    const updateDocument = async () => 
+    {
+        {
+          const ref = doc(db, "users", user.uid);
+          await updateDoc(ref, 
+            {
+                name: nameos,
+                email: email,
+                day: day,
+                month: month,
+                year: year,
+                speciality: speciality,
+                treatment: treatment,
+                private_phone: private_phone,
+                clinic_phone: clinic_phone,
+                address: address,
+          });
+        }
+      }
+
+    useEffect(() => {
+        if (loading) return;
+    }, [user, loading]);
+
+
     const maxDay = months.getMaxDays(month);
-
-
-
     function handleSaveClicked() {
         console.log("Saved");
-        // add inside the parentheses
-        editCompleteCallback({name, month, day, year, speciality});
+        updateDocument();
+        editCompleteCallback({nameos, month, day, year, email, address, private_phone, speciality, treatment, clinic_phone});
     }
 
     useEffect(() => {
         setDay(bound(day, 1, maxDay));
     }, [month]);
+
+
     // add as group
     return (<div>
         <div>
@@ -59,7 +85,7 @@ export default function EditableUserProfile({
             <h2_dash>Name:</h2_dash>
             <input
                 type='text'
-                value={name}
+                value={nameos}
                 onChange={e => setName(e.target.value)}
             />
         </Group>
@@ -95,26 +121,12 @@ export default function EditableUserProfile({
             />
         </Group>
         <Group>
-            <h2_dash>Old Password:</h2_dash>
+            <h2_dash>Private Phone:</h2_dash>
             <input
-                type='password'
-                value={oldPassword}
-                onChange={e => setOldPass(e.target.value)}
+                type='text'
+                value={private_phone}
+                onChange={e => setPhone(e.target.value)}
             />
-        </Group>
-        <Group>
-            <h2_dash>New Password:</h2_dash>
-            <input
-                type='password'
-                value={newPassword}
-                onChange={e => setNewPass(e.target.value)}/>
-        </Group>
-        <Group>
-            <h2_dash>Re-enter Password:</h2_dash>
-            <input
-                type='password'
-                value={rePassword}
-                onChange={e => setRePass(e.target.value)}/>
         </Group>
         </div>
 
@@ -129,11 +141,11 @@ export default function EditableUserProfile({
             />
         </Group>
         <Group>
-            <h2_dash>Phone:</h2_dash>
+            <h2_dash>Clinic Phone:</h2_dash>
             <input
                 type='text'
-                value={phone}
-                onChange={e => setPhone(e.target.value)}
+                value={clinic_phone}
+                onChange={e => setClinicPhone(e.target.value)}
             />
         </Group>
         <Group>
