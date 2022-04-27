@@ -11,7 +11,7 @@ export default function EditableUserProfile({stored, startEditCallback }) {
         <div>
         <h1_dash>Account Settings</h1_dash>
         <Group>
-            <h2_dash>Name:</h2_dash> {stored.name}
+            <h2_dash>Name:</h2_dash> {stored.nameos}
         </Group>
         <Group>
             <h2_dash>Birthday:</h2_dash> {months.getShortName(stored.month)} {stored.day} {stored.year}
@@ -20,7 +20,7 @@ export default function EditableUserProfile({stored, startEditCallback }) {
             <h2_dash>Email:</h2_dash> {stored.email}
         </Group>
         <Group>
-            <h2_dash>Password:</h2_dash> {stored.password}
+            <h2_dash>Private Phone:</h2_dash> {stored.private_phone}
         </Group>
         </div>
 
@@ -30,7 +30,7 @@ export default function EditableUserProfile({stored, startEditCallback }) {
                 <h2_dash>Address:</h2_dash> {stored.address}
             </Group>
             <Group>
-                <h2_dash>Phone:</h2_dash> {stored.phone}
+                <h2_dash>Clinic Phone:</h2_dash> {stored.clinic_phone}
             </Group>
             <Group>
                 <h2_dash>Speciality:</h2_dash> {stored.speciality}
