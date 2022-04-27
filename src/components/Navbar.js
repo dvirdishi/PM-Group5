@@ -17,7 +17,9 @@ export default function Navbar()
                 <Link to="/profile">
                 <button className="btn"><b><li className="li">Profile</li></b></button>
                 </Link>
-
+                <Link to="/contact">
+                    <button className="btn"><b><li className="li">Contact</li></b></button>
+                </Link>
             </ul>
         </nav>
     )
