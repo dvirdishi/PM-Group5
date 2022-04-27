@@ -1,3 +1,4 @@
+import "@progress/kendo-theme-default/dist/all.css"; // TO ADD
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './components/Navbar';
@@ -7,8 +8,10 @@ import Register from "./components/Register";
 import Reset from "./components/Reset";
 import Dashboard from "./components/Dashboard";
 import User from "./components/User";
+import Schedule from "./components/Schedule"; // TO ADD
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 
 function App() 
 {
@@ -23,9 +26,11 @@ function App()
                     <Route exact path="/reset" element={<Reset />} />
                     <Route exact path="/dashboard" element={<Dashboard />} />
                     <Route exact path="/profile" element={<User />} />
+                    <Route exact path="/Schedule" element={<Schedule />} /> // TO ADD
                 </Routes>
             </div>
         </Router>
+
     )
 }
 
