@@ -9,8 +9,13 @@ import Reset from "./components/Reset";
 import Dashboard from "./components/Dashboard";
 import User from "./components/User";
 import Schedule from "./components/Schedule";
+<<<<<<< HEAD
 import About from "./components/AboutDONA";
 import Policy from "./components/Policy";
+=======
+import Mail from "./components/Mail";
+import * as serviceWorker from './components/serviceWorker';
+>>>>>>> main
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -29,9 +34,13 @@ function App()
                     <Route exact path="/dashboard" element={<Dashboard />} />
                     <Route exact path="/profile" element={<User />} />
                     <Route exact path="/Schedule" element={<Schedule />} />
+<<<<<<< HEAD
                     <Route exact path="/About" element={<About />} />
                     <Route exact path="/Policy" element={<Policy />} />
 
+=======
+                    <Route exact path="/contact" element={<Mail />} />
+>>>>>>> main
                 </Routes>
             </div>
         </Router>
@@ -40,3 +49,4 @@ function App()
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
+serviceWorker.unregister();
