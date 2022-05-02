@@ -1,5 +1,6 @@
 import React from "react";
-import '../Policy.css';
+import DONA from "../images/1.png"
+import "../index.css";
 
 
 
@@ -7,24 +8,6 @@ export default function Policy() {
     return (
 
         <div>
-            <br/>
-
-
-
-
-
-
-            <div className="PolicyIntro">
-                <h1>PAYMENT POLICY</h1>
-                <p> Medical services are provided and billed by Medical Clinic.</p>
-                    <p>Our providers participate in most all of the major health insurance plans in the region.</p>
-                        <p>    Following are the health plans which we currently accept.</p>
-                <p> If your plan is not listed, we will be unable to file a claim on your behalf.</p>
-                   <p> However, we can provide you with a form that you can submit to your insurance company to instruct them to send reimbursements directly to you.</p>
-                <p>Please be aware that with any health plans, there may be deductibles and copayments for which you could be responsible.</p>
-            </div>
-
-
             <div className="rowPolicy">
                 <div className="columnPolicy">
                     <div className="cardPolicy">
@@ -69,7 +52,6 @@ export default function Policy() {
                                 <br/>
                                 <br/>
                                 <br/>
-                                <br/>
 
                             </p>
 
@@ -102,19 +84,16 @@ export default function Policy() {
                             <p>If we have received any such information from your insurance company, well be glad to share it with you. However, for answers to any questions about insurance payments, deductibles, or co-payments, you generally need to check with your insurance company.</p>
                             <br/>
                             <br/>
-
-
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
+            <div className="BottomMessageBar">
+            <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
+            <h1 className='h1_Message'><b>Donacontactmail@gmail.com</b></h1>
+            <h1 className='h2_Message'>Policy And Billing Plans</h1>
         </div>
-
+        </div>
     )
 }
 

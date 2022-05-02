@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db} from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import DONA from "../images/1.png"
 import "../index.css";
 function User() {
     const now = new Date(Date.now());
@@ -65,7 +66,13 @@ function User() {
         setEditMode(false);
     }
 
-    return (<div>
+    return (
+    <div>
+        <div className="BottomMessageBar">
+            <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
+            <h1 className='h1_Message'>Donacontactmail@gmail.com</h1>
+            <h1 className='h2_Message'><span >Logged In As</span> <span className='user_h1'>{nameos}</span></h1>
+        </div>
         <div className="container_dash">
             <div className="App_dash">
                 {

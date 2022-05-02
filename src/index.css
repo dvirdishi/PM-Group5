@@ -107,7 +107,7 @@ body {
 .profile-img {
   width: 8rem;
   clip-path: circle(60px at center);
-  margin-top: 4.5rem;
+  margin-top: 25%;
 }
 
 .name {
@@ -184,6 +184,8 @@ body {
 /* //////////////Dashboard/////////////// */
 
 .dashboard {
+  margin-top: -10%;
+  margin-bottom: -23%;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -196,6 +198,8 @@ body {
   text-align: center;
   background-color: #dcdcdc;
   padding: 30px;
+  border: 2px solid hsl(0, 0%, 0%);
+  border-radius: 1rem;
 }
 .dashboard__btn {
   padding: 10px;
@@ -220,6 +224,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.user_h1{
+  color: rgb(0, 255, 0);
 }
 
 div.App_dash {
@@ -398,12 +406,13 @@ button_dash:hover {
   overflow-wrap: break-word;
   border: 1px solid black;
   border-radius:10px;
+  resize: none;
 }
 
 .form {
   color:white;
   text-align: left;
-  justify-content: right;
+  justify-content: center;
   box-sizing: border-box;
   padding: 1rem;
   border-radius: 1rem;
@@ -412,7 +421,7 @@ button_dash:hover {
   display: flex;
   list-style-type: none;
   width: 25%;
-  margin-top :5%;
+  margin-top :2%;
   margin-bottom:10%;
   margin-right:35%;
   margin-left:39%;
@@ -442,11 +451,8 @@ button_dash:hover {
 
 .contact
 {
-
-  padding: 5% 10% 10% 42%;
   align-items: center;
-  display:list-item;
-
+  display:flow-root;
   justify-content: center;
 }
 
@@ -466,3 +472,183 @@ button_dash:hover {
 }
 
 /* //////////////Contact/////////////// */
+
+/* //////////////Policy/////////////// */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.columnPolicy {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.cardPolicy {
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+  margin: 0;
+}
+
+.PolicyIntro {
+  /*padding: 50px;*/
+  /*text-align: center;*/
+  /*background-color: #474e5d;*/
+  /*color: white;*/
+
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+  border-radius: 25px;
+  width: 70%;
+  height: 33%;
+}
+
+.title {
+  color: grey;
+}
+
+.buttoni {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttoni:hover {
+  background-color: #555;
+}
+
+
+@media screen and (max-width: 650px) {
+  .column {
+      width: 100%;
+      display: block;
+  }
+}
+
+/* //////////////Policy/////////////// */
+
+/* //////////////about/////////////// */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.columnAboutDONA {
+  float: left;
+  width: 25%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.cardAboutDONA {
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.AboutPersonPic {
+  width: 8rem;
+  clip-path: circle(60px at center);
+  margin-top: 3%;
+}
+
+.BottomMessageBar {
+
+  position:absolute;
+  bottom: 1px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.ButtomBarPic {
+  width: 8rem;
+  clip-path: circle(60px at center);
+  float:left;
+  margin-left: 5%;
+}
+
+.h1_Message{
+  float:left;
+  margin-top: 7%;
+  margin-left: -12%;
+  font-size: 140%;
+  font-style: italic;
+}
+
+.h2_Message{
+  margin-top: 3%;
+  margin-right: 17%;
+  font-size: 250%;
+  font-style: oblique;
+}
+
+.containerAboutDONA {
+  margin-top: 15%;
+  background-color: white;
+  padding: 0px;
+  height : auto;
+  border-radius: 1rem;
+  border: 2px solid hsl(0, 0%, 0%);
+}
+
+.containerAboutDONA::after, .rowAboutDONArow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.titleAboutDONA {
+  color: grey;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+      width: 100%;
+      display: block;
+  }
+}
+
+.About_button {
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  padding: 1rem;
+  background: rgb(86, 174, 233);
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+/* //////////////about/////////////// */

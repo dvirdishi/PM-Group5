@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as emailjs from 'emailjs-com';
+import DONA from "../images/1.png"
+
 class Mail extends Component{
     constructor(props) {
         super(props);
@@ -50,7 +52,13 @@ class Mail extends Component{
     };
     render(){
         return(
-            <div className="form">
+                <div>
+                <div className="BottomMessageBar">
+                <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
+                <h1 className='h1_Message'><b>Donacontactmail@gmail.com</b></h1>
+                <h1 className='h2_Message'>Contact Us</h1>
+                </div>
+                <div className="form">
                 <div className="contact" >
                 <br />
                 Name: <br /> <input placeholder=" Name" type="text" className="contactname" name="name" onChange={this.handleChangeName} />
@@ -65,9 +73,13 @@ class Mail extends Component{
                 Message:<br />  <textarea  placeholder=" Type message here..." className="contactmessage"     name="message"  onChange={this.handleChangeMessage}/>
                 <br />
                 <button  type="submit" onClick={this.sendMail}>Send mail</button>
-            </div>
-            </div>
+                </div>
+                </div>
+                </div>
+            
         );
     }
 }
 export default Mail;
+
+
