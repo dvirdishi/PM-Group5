@@ -17,6 +17,12 @@ export default function Navbar()
                 <Link to="/profile">
                 <button className="btn"><b><li className="li">Profile</li></b></button>
                 </Link>
+                <Link to="/about">
+                    <button className="btn"><b><li className="li">About</li></b></button>
+                </Link>
+                <Link to="/Policy">
+                    <button className="btn"><b><li className="li">Policy Insurance</li></b></button>
+                </Link>
 
             </ul>
         </nav>

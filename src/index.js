@@ -8,7 +8,9 @@ import Register from "./components/Register";
 import Reset from "./components/Reset";
 import Dashboard from "./components/Dashboard";
 import User from "./components/User";
-import Schedule from "./components/Schedule"; 
+import Schedule from "./components/Schedule";
+import About from "./components/AboutDONA";
+import Policy from "./components/Policy";
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -26,7 +28,10 @@ function App()
                     <Route exact path="/reset" element={<Reset />} />
                     <Route exact path="/dashboard" element={<Dashboard />} />
                     <Route exact path="/profile" element={<User />} />
-                    <Route exact path="/Schedule" element={<Schedule />} /> 
+                    <Route exact path="/Schedule" element={<Schedule />} />
+                    <Route exact path="/About" element={<About />} />
+                    <Route exact path="/Policy" element={<Policy />} />
+
                 </Routes>
             </div>
         </Router>
