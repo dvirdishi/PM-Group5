@@ -50,20 +50,22 @@ class Mail extends Component{
     };
     render(){
         return(
-            <div>
+            <div className="form">
+                <div className="contact" >
                 <br />
-                Name:  <input  type="text" name="name" onChange={this.handleChangeName} />
-                <br />
-                <br />
-                Email:  <input  type="text" name="email"  onChange={this.handleChangeEmail}/>
+                Name: <br /> <input placeholder=" Name" type="text" className="contactname" name="name" onChange={this.handleChangeName} />
                 <br />
                 <br />
-                Phone:  <input type="number" name="phone"  onChange={this.handleChangePhone}/>
+                Email: <br /> <input placeholder=" Email Address" type="text" className="contactemail" name="email"  onChange={this.handleChangeEmail}/>
                 <br />
                 <br />
-                Message:<br />  <input className="contact" type="textarea" name="message"  onChange={this.handleChangeMessage}/>
+                Phone: <br /> <input  placeholder=" Phone Number" type="number" className="contactphone" name="phone"  onChange={this.handleChangePhone}/>
+                <br />
+                <br />
+                Message:<br />  <textarea  placeholder=" Type message here..." className="contactmessage"     name="message"  onChange={this.handleChangeMessage}/>
                 <br />
                 <button  type="submit" onClick={this.sendMail}>Send mail</button>
+            </div>
             </div>
         );
     }
