@@ -21,7 +21,8 @@ function User() {
     const [private_phone, setPhone] = useState([]);
     const [clinic_phone, setClinicPhone] = useState([]);
     const [treatment, setTreat] = useState([]);
-    const stored = {nameos, month, day, year, speciality, email, treatment, private_phone, address, clinic_phone};
+    const [isdoctor,get_isdoctor]= useState([]);
+    const stored = {nameos, month, day, year, speciality, email, treatment, private_phone, address, clinic_phone, isdoctor};
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -40,6 +41,7 @@ function User() {
     setPhone(data.private_phone);
     setClinicPhone(data.clinic_phone);
     setTreat(data.treatment);
+    get_isdoctor(data.isdoctor);
     };
 
     useEffect(() => {
