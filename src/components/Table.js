@@ -1,12 +1,23 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import mockdata from "../data.json";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
 import "../index.css";
 
 const Table = () => {
   const [tableData, setTableData] = useState(mockdata);
+  const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
+ 
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/login");
+  }, [user, loading]);
+
 
   const columns = [
     { label: "Full Name", accessor: "full_name", sortable: true },
