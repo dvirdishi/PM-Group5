@@ -496,16 +496,10 @@ html {
 }
 
 .cardPolicy {
-  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
   margin: 0;
 }
 
 .PolicyIntro {
-  /*padding: 50px;*/
-  /*text-align: center;*/
-  /*background-color: #474e5d;*/
-  /*color: white;*/
-
   margin: auto;
   padding: 20px;
   text-align: center;
@@ -544,6 +538,28 @@ html {
   }
 }
 
+.Policy_container {
+  overflow: hidden;
+  box-shadow: 0px 2px 8px 0px var(--clr-gray-light);
+  background-color: white;
+  text-align: left;
+  border-radius: 1rem;
+  margin-top: 3%;
+  margin-left: 12%;
+  margin-right: 5%;
+  margin-bottom: 8%;
+  padding: 0px;
+  height : auto;
+  border-radius: 1rem;
+  border: 2px solid hsl(0, 0%, 0%);
+}
+
+.Policy_h2{
+  text-align: center;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
 /* //////////////Policy/////////////// */
 
 /* //////////////about/////////////// */
@@ -570,7 +586,6 @@ html {
 
 .cardAboutDONA {
   text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
 }
 
@@ -615,6 +630,7 @@ html {
 
 .containerAboutDONA {
   margin-top: 15%;
+  margin-left: 15%;
   background-color: white;
   padding: 0px;
   height : auto;
@@ -623,9 +639,9 @@ html {
 }
 
 .containerAboutDONA::after, .rowAboutDONArow::after {
-  content: "";
-  clear: both;
-  display: table;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  justify-content: center;
 }
 
 .titleAboutDONA {
@@ -652,3 +668,94 @@ html {
 }
 
 /* //////////////about/////////////// */
+
+/* //////////////SiderBar/////////////// */
+
+#header {
+  position:fixed;
+  width: 220px;
+}
+#header .pro-sidebar {
+  height: 100vh;
+  right: 10px;
+}
+#header .closemenu {
+  color: #000;
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+  line-height: 20px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 22px;
+  top: 55px;
+  cursor: pointer;
+}
+#header .pro-sidebar {
+  width: 100%;
+  min-width: 100%;
+}
+#header .pro-sidebar.collapsed {
+  width: 80px;
+  min-width: 80px;
+}
+#header .pro-sidebar-inner {
+  background-color: white;
+  box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
+}
+#header .pro-sidebar-inner .pro-sidebar-layout {
+  overflow-y: hidden;
+}
+#header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
+  font-size: 20px;
+  padding: 0 20px;
+  color: #000;
+  font-weight: bold;
+}
+#header .pro-sidebar-inner .pro-sidebar-layout ul {
+  padding: 0 5px;
+}
+#header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
+  color: #000;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+#header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
+  background-color: #fbf4cd;
+  color: #000;
+  border-radius: 3px;
+}
+#header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
+  color: #000;
+}
+#header .pro-sidebar-inner .pro-sidebar-layout .active {
+  background-image: linear-gradient(0deg, #caced8 0%, #caced8 100%);
+  border-radius: 1rem;
+  border: 1% solid hsl(0, 0%, 0%);
+}
+#header .logo {
+  padding: 20px;
+}
+
+@media only screen and (max-width: 720px) {
+  html {
+    overflow: hidden;
+  }
+}
+
+.BigSideBarProfilePic {
+  width: 8rem;
+  clip-path: circle(50px at center);
+  margin-left: 8%;
+}
+
+.SmallSideBarProfilePic {
+  width: 4rem;
+  clip-path: circle(50px at center);
+  margin-left: -30%;
+}
+
+
+
+
+/* //////////////SiderBar/////////////// */

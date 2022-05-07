@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom';
 import Logo from "../images/1.png"
+import SideBar from "./SideBar";
 
 export default function Navbar() 
 {
@@ -14,9 +15,6 @@ export default function Navbar()
                 <Link to="/login">
                 <button className="btn"><b><li className="li">Sign-in</li></b></button>
                 </Link>
-                <Link to="/profile">
-                <button className="btn"><b><li className="li">Profile</li></b></button>
-                </Link>
                 <Link to="/about">
                     <button className="btn"><b><li className="li">About</li></b></button>
                 </Link>
@@ -27,6 +25,7 @@ export default function Navbar()
                     <button className="btn"><b><li className="li">Contact</li></b></button>
                 </Link>
             </ul>
+            <SideBar />
         </nav>
     )
 }

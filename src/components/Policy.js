@@ -11,11 +11,9 @@ export default function Policy() {
             <div className="rowPolicy">
                 <div className="columnPolicy">
                     <div className="cardPolicy">
-
-                        <div className="container">
-                            <h2>HEALTH PLANS</h2>
+                        <div className="Policy_container">
+                            <h2 className="Policy_h2">HEALTH PLANS</h2>
                             <p >
-
                                 <br/>
                                 ◉ Medical Insurance Co.
                                 <br/>
@@ -61,9 +59,8 @@ export default function Policy() {
 
                 <div className="columnPolicy">
                     <div className="cardPolicy">
-
-                        <div className="container">
-                            <h2>QUESTIONS ABOUT YOUR BILL </h2>
+                        <div className="Policy_container">
+                            <h2 className="Policy_h2">QUESTIONS ABOUT YOUR BILL </h2>
                             <br/>
                             <p><strong>What billing or insurance information will I receive?</strong></p>
                             <p>You will receive a copy of your bill. After your insurance has paid, well provide you with a monthly statement of your account.</p>
@@ -75,7 +72,9 @@ export default function Policy() {
                             <p>Each physician who provides professional services will send you a separate bill from his or her office. These physicians will include:
                                 <br/>
                                 - your own physician
+                                <br/>
                                 - other physicians who conducted tests and procedures
+                                <br/>
                                 - consulting physicians chosen by your primary physician to read and interpret test results.
                                 <br/>
                                 These physicians may include specialists in anesthesiology, cardiology, emergency medicine, nuclear medicine, pathology, radiology, or urodynamics. You will be responsible for paying these bills as well.</p>
