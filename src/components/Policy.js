@@ -69,7 +69,9 @@ export default function Policy() {
                             <p>Generally, it takes from 45 to 60 days to obtain payment from an insurance carrier.</p>
                             <br/>
                             <p><strong>Why am I getting bills from physicians?</strong></p>
-                            <p>Each physician who provides professional services will send you a separate bill from his or her office. These physicians will include:
+                            <p>Each physician who provides professional services will send you a separate bill from his or her office.
+                                <br/>
+                                These physicians will include:
                                 <br/>
                                 - your own physician
                                 <br/>

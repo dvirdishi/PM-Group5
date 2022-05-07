@@ -61,8 +61,8 @@ export default function SideBar() {
                 <Link to="/profile"></Link>
               </MenuItem>
               <MenuItem active={IconActive} icon={<RiPencilLine />}>
-                My Schedule
-                <Link to="/profile"></Link>
+                My Meetings
+                <Link to="/MyMeetings"></Link>
                 </MenuItem>
             </Menu>
           </SidebarContent>
