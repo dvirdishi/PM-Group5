@@ -9,12 +9,24 @@ function Register()
 {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [name, setName] = useState("");
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const register = () => {
     if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
+    if(password==password2) 
+    {
+      let regExp = /[A-Z]/;
+      let isMatch = regExp.test(password)
+      let result = isMatch ? "Yes" : "No";
+      if(password.length < 8 || result == "No")
+      {
+        alert("Password Must Be At Least 8 Chars Long And Contain Capital Letter");
+      }
+      else registerWithEmailAndPassword(name, email, password);
+    }
+    else alert("Passwords Field Are Not The Same, Pleaes Enter Again.");
   };
   
   useEffect(() => {
@@ -45,6 +57,13 @@ function Register()
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+        />
+        <input
+          type="password"
+          className="register__textBox"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
+          placeholder="Re-Password"
         />
         <button className="register__btn" onClick={register}>
           Register

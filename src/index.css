@@ -332,8 +332,9 @@ button_dash:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #dcdcdc;
+  background-color: #949bac;
   padding: 30px;
+  color: white;
 }
 .register__textBox {
   padding: 10px;
@@ -370,7 +371,8 @@ button_dash:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #dcdcdc;
+  background-color: #949bac;
+  color: white;
   padding: 30px;
 }
 .reset__textBox {
