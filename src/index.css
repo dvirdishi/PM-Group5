@@ -473,6 +473,18 @@ button_dash:hover {
   monospace;
 }
 
+.Contact__btn {
+  font-size: 20px;
+  font-style: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 90px;
+  color: white;
+  background-color: black;
+  border-radius: 1rem;
+  border: 10px solid hsl(0, 0%, 0%);
+}
+
 /* //////////////Contact/////////////// */
 
 /* //////////////Policy/////////////// */
@@ -634,7 +646,7 @@ html {
   margin-top: 15%;
   margin-left: 15%;
   background-color: white;
-  padding: 0px;
+  padding: 2px;
   height : auto;
   border-radius: 1rem;
   border: 2px solid hsl(0, 0%, 0%);

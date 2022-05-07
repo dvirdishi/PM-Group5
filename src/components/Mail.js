@@ -72,7 +72,7 @@ class Mail extends Component{
                 <br />
                 Message:<br />  <textarea  placeholder=" Type message here..." className="contactmessage"     name="message"  onChange={this.handleChangeMessage}/>
                 <br />
-                <button  type="submit" onClick={this.sendMail}>Send mail</button>
+                <button className="Contact__btn" type="submit" onClick={this.sendMail}>Send mail</button>
                 </div>
                 </div>
                 </div>
