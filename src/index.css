@@ -704,6 +704,7 @@ html {
   font-size: 22px;
   top: 55px;
   cursor: pointer;
+  margin-top: 30%;
 }
 #header .pro-sidebar {
   width: 100%;
@@ -735,7 +736,7 @@ html {
   font-weight: bold;
 }
 #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
-  background-color: #fbf4cd;
+  background-color: #caced8;
   color: #000;
   border-radius: 3px;
 }
@@ -764,9 +765,9 @@ html {
 }
 
 .SmallSideBarProfilePic {
-  width: 4rem;
-  clip-path: circle(50px at center);
-  margin-left: -30%;
+  width: 6rem;
+  clip-path: circle(30px at center);
+  margin-left: -60%;
 }
 
 /* //////////////SiderBar/////////////// */
