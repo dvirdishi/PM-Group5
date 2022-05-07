@@ -82,6 +82,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
 
 
     // add as group
+    if(stored.isdoctor==1){
     return (<div>
         <div>
         <h1_dash>Account Settings</h1_dash>
@@ -175,4 +176,64 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             </div>
     </div>
     );
+    }
+    if(stored.isdoctor==0){
+        return (<div>
+            <div>
+            <h1_dash>Account Settings</h1_dash>
+            <Group>
+                <h2_dash>Name:</h2_dash>
+                <input
+                    type='text'
+                    value={nameos}
+                    onChange={e => setName(e.target.value)}
+                />
+            </Group>
+    
+            <Group>
+                <h2_dash>Birthday:</h2_dash>
+    
+                <select
+                    value={month}
+                    onChange={e => setMonth(bound(e.target.value, 0, 11))}
+                >
+                    {renderMonthOptions()}
+                </select>
+                <input
+                    type='number'
+                    value={day}
+                    onChange={e => setDay(bound(e.target.value, 1, maxDay))}
+                    style={{width: "50px"}}
+                />
+                <input
+                    type='number'
+                    value={year}
+                    onChange={e => setYear(bound(e.target.value, 1900, 2022))}
+                    style={{width: "60px"}}
+                />
+            </Group>
+            <Group>
+                <h2_dash>Email:</h2_dash>
+                <input
+                    type='text'
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+            </Group>
+            <Group>
+                <h2_dash>Private Phone:</h2_dash>
+                <input
+                    type='text'
+                    value={private_phone}
+                    onChange={e => setPhone(e.target.value)}
+                />
+            </Group>
+            </div>
+                <div className="btn-group-dash">
+                    <button onClick={handleSaveClicked}>Save</button>
+                    <button onClick={handleCancelClicked}>Cancel</button>
+                </div>
+        </div>
+        );
+        }
 }
