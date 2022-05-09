@@ -19,7 +19,7 @@ export default function Navbar()
                     <button className="btn"><b><li className="li">About</li></b></button>
                 </Link>
                 <Link to="/Policy">
-                    <button className="btn"><b><li className="li">Policy Insurance</li></b></button>
+                    <button className="btn"><b><li className="li">Policy & Billing Plans</li></b></button>
                 </Link>
                 <Link to="/contact">
                     <button className="btn"><b><li className="li">Contact</li></b></button>

@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import TableDoctors from "./TableDoctors";
 import { auth } from "../firebase";
 import "../index.css";
 
-function Dashboard() {
+function Admin() {
+
+  const add_doctor = () => {
+    navigate("/RegisterDoctor");
+  };
+
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -15,8 +21,10 @@ function Dashboard() {
 
   return (
     <div>
-       
+       <button className="Admin_btn" type="submit" onClick={add_doctor}>Add Doctor</button>
+       <br></br>
+       <TableDoctors />
      </div>
   );
 }
-export default Dashboard;
+export default Admin;
