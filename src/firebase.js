@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  sendEmailVerification,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -71,7 +72,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await setDoc(doc(db, "users", user.uid), {
+    await sendEmailVerification(user)
+    .then(setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       name,
       authProvider: "local",
@@ -83,7 +85,33 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       speciality: "Empty",
       treatment: "Empty",
       private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
+    }));
+    alert("User Added Successfully!");
+    auth.signOut();
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const registerNewDoctor = async (name, email, password, clinic_phone, speciality, treatment, address) => {
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    await setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      name,
+      authProvider: "local",
+      email,
+      password,
+      day: defaultBirthday.getDate(),
+      month: defaultBirthday.getMonth(),
+      year: defaultBirthday.getFullYear(),
+      speciality,
+      treatment,
+      private_phone: "Empty", clinic_phone, address, isdoctor:"1",
     });
+    alert("Doctor Added Successfully!");
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -110,4 +138,16 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  registerNewDoctor,
 };
+
+// const signup = ()=>{
+//   auth.createUserWithEmailAndPassword(email , password)
+//   .then((userCredential)=>{
+//       // send verification mail.
+//     userCredential.user.sendEmailVerification();
+//     auth.signOut();
+//     alert("Email sent");
+//   })
+//   .catch(alert);
+// }
