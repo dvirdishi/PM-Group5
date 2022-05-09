@@ -329,12 +329,18 @@ button_dash:hover {
   justify-content: center;
 }
 .register__container {
+  border-radius: 1rem;
+  color: white;
   display: flex;
   flex-direction: column;
   text-align: center;
   background-color: #949bac;
-  padding: 30px;
-  color: white;
+  padding: 2rem;
+  border: 2px solid hsl(0, 0%, 0%);
+  margin-top :5%;
+  margin-bottom:10%;
+  margin-right:35%;
+  margin-left:39%;
 }
 .register__textBox {
   padding: 10px;
@@ -368,12 +374,18 @@ button_dash:hover {
   justify-content: center;
 }
 .reset__container {
+  border-radius: 1rem;
+  color: white;
   display: flex;
   flex-direction: column;
   text-align: center;
   background-color: #949bac;
-  color: white;
-  padding: 30px;
+  padding: 2rem;
+  border: 2px solid hsl(0, 0%, 0%);
+  margin-top :5%;
+  margin-bottom:10%;
+  margin-right:35%;
+  margin-left:39%;
 }
 .reset__textBox {
   padding: 10px;

@@ -10,7 +10,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/login");
+    if (user && user.email != "donacontactmail@gmail.com") navigate("/dashboard");
   }, [user, loading]);
 
   return (

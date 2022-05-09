@@ -6,8 +6,13 @@ import { auth, sendPasswordReset } from "../firebase";
 import "../index.css";
 
 function Reset() {
-  const [email, setEmail] = useState("");
+
   const [user, loading] = useAuthState(auth);
+  const reset = () => {
+    navigate("/dashboard");
+    sendPasswordReset(email);
+  };
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (loading) return;
@@ -25,7 +30,7 @@ function Reset() {
         />
         <button
           className="reset__btn"
-          onClick={() => sendPasswordReset(email)}
+          onClick={reset}
         >
           Send password reset email
         </button>

@@ -28,8 +28,8 @@ function RegisterDoctor()
       }
       else 
       {
-        registerNewDoctor(name, email, password, clinic_phone, speciality, treatment, address);
         navigate("/Adminpanel");
+        registerNewDoctor(name, email, password, clinic_phone, speciality, treatment, address);
       }
     }
     else alert("Passwords Field Are Not The Same, Pleaes Enter Again.");
@@ -37,6 +37,7 @@ function RegisterDoctor()
   
   useEffect(() => {
     if (loading) return;
+    if (user && user.email != "donacontactmail@gmail.com") navigate("/dashboard");
   }, [user, loading]);
 
   return (

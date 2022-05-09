@@ -54,6 +54,7 @@ const signInWithGoogle = async () => {
         private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
       });
     }
+    alert("Logged In Successfully!");
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -87,7 +88,6 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
     }));
     alert("User Added Successfully!");
-    auth.signOut();
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -112,6 +112,7 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
       private_phone: "Empty", clinic_phone, address, isdoctor:"1",
     });
     alert("Doctor Added Successfully!");
+    auth.signOut();
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -120,13 +121,14 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
 
 const sendPasswordReset = async (email) => {
   try {
-    await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
+    await sendPasswordResetEmail(auth, email)
+    alert("Password Reset Link Sent!");
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
 };
+
 const logout = () => {
   signOut(auth);
 };
@@ -140,14 +142,3 @@ export {
   logout,
   registerNewDoctor,
 };
-
-// const signup = ()=>{
-//   auth.createUserWithEmailAndPassword(email , password)
-//   .then((userCredential)=>{
-//       // send verification mail.
-//     userCredential.user.sendEmailVerification();
-//     auth.signOut();
-//     alert("Email sent");
-//   })
-//   .catch(alert);
-// }

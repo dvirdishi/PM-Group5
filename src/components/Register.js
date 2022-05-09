@@ -1,8 +1,8 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { auth, registerWithEmailAndPassword, signInWithGoogle
-} from "../firebase";
+import { auth, registerWithEmailAndPassword} from "../firebase";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 function Register() 
 {
@@ -11,6 +11,8 @@ function Register()
   const [password2, setPassword2] = useState("");
   const [name, setName] = useState("");
   const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
+
   const register = () => {
     if (!name) alert("Please enter name");
     if(password==password2) 
@@ -22,13 +24,17 @@ function Register()
       {
         alert("Password Must Be At Least 8 Chars Long And Contain Capital Letter");
       }
-      else registerWithEmailAndPassword(name, email, password);
+      else
+      {
+        registerWithEmailAndPassword(name, email, password);
+      }
     }
     else alert("Passwords Field Are Not The Same, Pleaes Enter Again.");
   };
   
   useEffect(() => {
     if (loading) return;
+    if (user) navigate("/dashboard");
   }, [user, loading]);
 
   return (
@@ -64,12 +70,6 @@ function Register()
         />
         <button className="register__btn" onClick={register}>
           Register
-        </button>
-        <button
-          className="register__btn register__google"
-          onClick={signInWithGoogle}
-        >
-          Register with Google
         </button>
         <div>
           Already have an account? <Link to="/login">Login</Link> now.
