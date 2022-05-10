@@ -47,6 +47,7 @@ function User() {
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate("/login");
+        if(user && user.email == "donacontactmail@gmail.com") return navigate("/Adminpanel");
         fetchUserName();
     }, [user, loading]);
     

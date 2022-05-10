@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import mockdata from "../data.json";
+import mockdata from "../doctors.json";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import "../index.css";
 
-const Table = () => {
+const TableDoctors = () => {
   const [tableData, setTableData] = useState(mockdata);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -21,12 +21,14 @@ const Table = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: "Doctor", sortable: true },
-    { label: "Client's Name", accessor: "Client", sortable: true },
-    { label: "Date", accessor: "Date", sortable: true },
-    { label: "Hour", accessor: "Hour", sortable: true },
-    { label: "Duration", accessor: "Duration", sortable: true },
-    { label: "Type", accessor: "Type", sortable: true },
+    { label: "Doctor's Name", accessor: "Name", sortable: true },
+    { label: "Email", accessor: "Email", sortable: true },
+    { label: "Birthday", accessor: "Date", sortable: true },
+    { label: "Speciality", accessor: "Speciality", sortable: true },
+    { label: "Treatment", accessor: "Treatment", sortable: true },
+    { label: "Private Phone", accessor: "Private Phone", sortable: true },
+    { label: "Clinic Phone", accessor: "Clinic Phone", sortable: true },
+    { label: "Clinic Address", accessor: "Clinic Address", sortable: true },
   ];
 
   const handleSorting = (sortField, sortOrder) => {
@@ -56,4 +58,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default TableDoctors;

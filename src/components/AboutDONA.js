@@ -11,7 +11,6 @@ import "../index.css";
 export default function AboutDONA() {
     return (
         <div>
-
         <div className="BottomMessageBar">
             <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
             <h1 className='h1_Message'><b>Donacontactmail@gmail.com</b></h1>

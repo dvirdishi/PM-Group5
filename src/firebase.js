@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  sendEmailVerification,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -14,7 +15,7 @@ import {
   getDocs,
   collection,
   where,
-  doc, setDoc,
+  doc, setDoc
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -32,6 +33,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+
 
 const signInWithGoogle = async () => {
   try {
@@ -53,6 +55,7 @@ const signInWithGoogle = async () => {
         private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
       });
     }
+    alert("Logged In Successfully!");
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -71,7 +74,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await setDoc(doc(db, "users", user.uid), {
+    await sendEmailVerification(user)
+    .then(setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       name,
       authProvider: "local",
@@ -83,7 +87,32 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       speciality: "Empty",
       treatment: "Empty",
       private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
+    }));
+    alert("User Added Successfully!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const registerNewDoctor = async (name, email, password, clinic_phone, speciality, treatment, address) => {
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    await setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      name,
+      authProvider: "local",
+      email,
+      password,
+      day: defaultBirthday.getDate(),
+      month: defaultBirthday.getMonth(),
+      year: defaultBirthday.getFullYear(),
+      speciality,
+      treatment,
+      private_phone: "Empty", clinic_phone, address, isdoctor:"1",
     });
+    auth.signOut();
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -92,13 +121,14 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 
 const sendPasswordReset = async (email) => {
   try {
-    await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
+    await sendPasswordResetEmail(auth, email)
+    alert("Password Reset Link Sent!");
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
 };
+
 const logout = () => {
   signOut(auth);
 };
@@ -110,4 +140,5 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  registerNewDoctor,
 };

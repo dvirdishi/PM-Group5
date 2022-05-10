@@ -92,7 +92,7 @@ export default function Policy() {
             <div className="BottomMessageBar">
             <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
             <h1 className='h1_Message'><b>Donacontactmail@gmail.com</b></h1>
-            <h1 className='h2_Message'>Policy And Billing Plans</h1>
+            <h1 className='h2_Message'>Policy & Billing Plans</h1>
         </div>
         </div>
     )

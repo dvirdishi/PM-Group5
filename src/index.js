@@ -13,11 +13,16 @@ import About from "./components/AboutDONA";
 import Policy from "./components/Policy";
 import Mail from "./components/Mail";
 import Table from "./components/Table";
+<<<<<<< HEAD
 
 
 
 
 
+=======
+import Admin from "./components/Admin";
+import RegisterDoctor from "./components/RegisterDoctor";
+>>>>>>> main
 import * as serviceWorker from './components/serviceWorker';
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -35,6 +40,7 @@ function App()
                 <Routes>
 
                     <Route exact path="/" element={<Homepage />} />
+<<<<<<< HEAD
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
                     <Route exact path="/reset" element={<Reset />} />
@@ -50,6 +56,20 @@ function App()
 
 
 
+=======
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/RegisterDoctor" element={<RegisterDoctor />} />
+                    <Route path="/reset" element={<Reset />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<User />} />
+                    <Route path="/Schedule" element={<Schedule />} />
+                    <Route path="/About" element={<About />} />
+                    <Route path="/Policy" element={<Policy />} />
+                    <Route path="/contact" element={<Mail />} />
+                    <Route path="/MyMeetings" element={<Table />} />
+                    <Route path="/Adminpanel" element={<Admin />} />
+>>>>>>> main
                 </Routes>
             </div>
         </Router>
