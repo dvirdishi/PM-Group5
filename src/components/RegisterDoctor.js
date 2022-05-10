@@ -28,7 +28,6 @@ function RegisterDoctor()
       }
       else 
       {
-        navigate("/Adminpanel");
         registerNewDoctor(name, email, password, clinic_phone, speciality, treatment, address);
       }
     }

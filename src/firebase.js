@@ -15,7 +15,7 @@ import {
   getDocs,
   collection,
   where,
-  doc, setDoc,
+  doc, setDoc
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -33,6 +33,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+
 
 const signInWithGoogle = async () => {
   try {
@@ -111,7 +112,6 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
       treatment,
       private_phone: "Empty", clinic_phone, address, isdoctor:"1",
     });
-    alert("Doctor Added Successfully!");
     auth.signOut();
   } catch (err) {
     console.error(err);

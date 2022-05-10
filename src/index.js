@@ -28,18 +28,18 @@ function App()
                 <Navbar />
                 <Routes>
                     <Route exact path="/" element={<Homepage />} />
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/register" element={<Register />} />
-                    <Route exact path="/RegisterDoctor" element={<RegisterDoctor />} />
-                    <Route exact path="/reset" element={<Reset />} />
-                    <Route exact path="/dashboard" element={<Dashboard />} />
-                    <Route exact path="/profile" element={<User />} />
-                    <Route exact path="/Schedule" element={<Schedule />} />
-                    <Route exact path="/About" element={<About />} />
-                    <Route exact path="/Policy" element={<Policy />} />
-                    <Route exact path="/contact" element={<Mail />} />
-                    <Route exact path="/MyMeetings" element={<Table />} />
-                    <Route exact path="/Adminpanel" element={<Admin />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/RegisterDoctor" element={<RegisterDoctor />} />
+                    <Route path="/reset" element={<Reset />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<User />} />
+                    <Route path="/Schedule" element={<Schedule />} />
+                    <Route path="/About" element={<About />} />
+                    <Route path="/Policy" element={<Policy />} />
+                    <Route path="/contact" element={<Mail />} />
+                    <Route path="/MyMeetings" element={<Table />} />
+                    <Route path="/Adminpanel" element={<Admin />} />
                 </Routes>
             </div>
         </Router>
