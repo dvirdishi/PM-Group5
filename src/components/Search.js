@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import ReactSearchBox from "react-search-box";
-
-
-
 export default class Search extends Component {
     data = [
         {
