@@ -79,6 +79,7 @@ body {
 }
 
 .wrapper-grid {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 20rem);
   justify-content: center;
@@ -93,6 +94,19 @@ body {
   position: relative;
   margin: 1.5rem;
 }
+
+.SearchButton {
+
+  display: flex;
+  padding: 5px;
+  font-size: 16px;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 45%;
+
+
+}
+
 
 .banner-img {
   position: absolute;
@@ -611,9 +625,10 @@ html {
 
 .BottomMessageBar {
 
-  position:absolute;
+  position: fixed;
   bottom: 0px;
-  padding: 10px;
+  padding: 5px;
+  height: 15%;
   width: 100%;
   text-align: center;
   background-color: #474e5d;
@@ -833,5 +848,9 @@ th.down {
 .table tbody tr:nth-child(2n) td {
   background: #fff;
 }
+
+/*//////SearchBox/////////*/
+
+
 
 /* //////////////MyMeetings/////////////// */

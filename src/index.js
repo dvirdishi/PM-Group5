@@ -13,18 +13,27 @@ import About from "./components/AboutDONA";
 import Policy from "./components/Policy";
 import Mail from "./components/Mail";
 import Table from "./components/Table";
+
+
+
+
+
 import * as serviceWorker from './components/serviceWorker';
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
+
 function App() 
 {
+
+
     return (
         <Router>
             <div>
                 <Navbar />
                 <Routes>
+
                     <Route exact path="/" element={<Homepage />} />
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
@@ -36,6 +45,11 @@ function App()
                     <Route exact path="/Policy" element={<Policy />} />
                     <Route exact path="/contact" element={<Mail />} />
                     <Route exact path="/MyMeetings" element={<Table />} />
+
+
+
+
+
                 </Routes>
             </div>
         </Router>

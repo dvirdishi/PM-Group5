@@ -24,6 +24,9 @@ export default function Navbar()
                 <Link to="/contact">
                     <button className="btn"><b><li className="li">Contact</li></b></button>
                 </Link>
+
+
+
             </ul>
             <SideBar />
         </nav>

@@ -84,6 +84,7 @@ const Schedule = () => {
     }
 
     return (
+       <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
         <div className="k-my-8">
             <div className="k-mb-4 k-font-weight-bold">Appointments Schedule </div>
             <div className="k-flex k-display-flex k-mb-4">
@@ -92,7 +93,7 @@ const Schedule = () => {
                 <div className="k-ml-4 k-display-flex k-flex-col">
                     {bookingTimes.map(time => {
                         return (
-                            <button
+                            <button style={{backgroundColor:"white"}}
                                 key={time}
                                 className="k-button k-mb-4"
                                 onClick={() => disable_enable_button(time)}
@@ -113,11 +114,12 @@ const Schedule = () => {
                 </div>
             ) : null}
             {
-                <div>
+                <div >
                     <button id="Book an appointment " disabled={ButEnable}>Book an appointment </button>
                 </div>
             }
         </div>
+</div>
     );
 };
 

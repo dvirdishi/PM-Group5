@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@mui/material": "^5.6.4",
     "@progress/kendo-react-dateinputs": "^5.2.0",
     "@progress/kendo-theme-default": "^5.3.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
     "emailjs-com": "^3.2.0",
     "express": "^4.17.3",
     "firebase": "^9.6.10",
@@ -20,6 +23,9 @@
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
+    "react-search-box": "^2.2.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
