@@ -4,10 +4,12 @@ import {Link} from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
-export default function Homepage() {
 
+export default function FilterSearch() {
+
+    const [temp_name, setName] = useState("");
     const [data,setData] = useState([]);
-    const getAllDocs = async () => 
+    const getAllDocs = async () =>
     {
         const querySnapshot = await getDocs(collection(db, "users"));
         let i = 0;
@@ -24,21 +26,18 @@ export default function Homepage() {
      getAllDocs().then(res => setData(res));
     }, [])
 
+
     return (
     <div>
-        <div>
-        <Link to="/FilterCity">
-            <button className="SearchButton" >City</button>
-        </Link>
-        <Link to="/FilterSpec">
-        <button className="SearchButton" >Speciality</button>
-        </Link>
-        <Link to="/FilterSearch">
-        <button className="SearchButton" >Search</button>
-        </Link>
-        </div>
+        <input
+            type="text"
+            className="SearchButton"
+            value={temp_name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter Doctor's Name"
+        />
         <div className="wrapper-grid">
-            {data && data.map((doc) => doc.isdoctor === '1' && (
+            {data && data.map((doc) => doc.isdoctor === '1' && doc.name == temp_name &&(
             <div key={doc.uid} className="container">
                 <div className='banner-img'></div>
                 <img src={Doctor} alt='profile image' className="profile-img"></img>

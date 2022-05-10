@@ -16,6 +16,9 @@ import Table from "./components/Table";
 import Admin from "./components/Admin";
 import RegisterDoctor from "./components/RegisterDoctor";
 import * as serviceWorker from './components/serviceWorker';
+import FilterCity from "./components/FilterCity";
+import FilterSpec from "./components/FilterSpec";
+import FilterSearch from "./components/FilterSearch";
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -44,6 +47,9 @@ function App()
                     <Route path="/contact" element={<Mail />} />
                     <Route path="/MyMeetings" element={<Table />} />
                     <Route path="/Adminpanel" element={<Admin />} />
+                    <Route path="/FilterCity" element={<FilterCity />} />
+                    <Route path="/FilterSpec" element={<FilterSpec />} />
+                    <Route path="/FilterSearch" element={<FilterSearch />} />
                 </Routes>
             </div>
         </Router>
