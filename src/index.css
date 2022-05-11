@@ -96,14 +96,12 @@ body {
 }
 
 .SearchButton {
-
   display: table-column;
   padding: 10px;
   font-size: 16px;
   margin-top: 20px;
   margin-left: 5%;
   background-color: white;
-
 }
 .buttons_group{
   margin-left: 40.5%;
@@ -663,7 +661,8 @@ html {
   width: 8rem;
   clip-path: circle(60px at center);
   float:left;
-  margin-left: 5%;
+  margin-left: 1%;
+  margin-top: 0.5%;
 }
 
 .h1_Message{
@@ -676,7 +675,7 @@ html {
 
 .h2_Message{
   margin-top: 3%;
-  margin-right: 17%;
+  margin-right: 10%;
   font-size: 250%;
   font-style: oblique;
 }

@@ -55,7 +55,6 @@ class Mail extends Component{
                 <div>
                 <div className="BottomMessageBar">
                 <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
-                <h1 className='h1_Message'><b>Donacontactmail@gmail.com</b></h1>
                 <h1 className='h2_Message'>Contact Us</h1>
                 </div>
                 <div className="form">
