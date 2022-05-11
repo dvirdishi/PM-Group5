@@ -97,15 +97,27 @@ body {
 
 .SearchButton {
 
-  display: flex;
-  padding: 5px;
+  display: table-column;
+  padding: 10px;
   font-size: 16px;
-  align-items: center;
   margin-top: 20px;
-  margin-left: 45%;
-
+  margin-left: 5%;
+  background-color: white;
 
 }
+.buttons_group{
+  margin-left: 40.5%;
+}
+
+.input_search {
+  display: table-column;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-left: 46%;
+  background-color: white;
+}
+
 
 
 .banner-img {

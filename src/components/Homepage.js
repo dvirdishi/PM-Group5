@@ -26,15 +26,15 @@ export default function Homepage() {
 
     return (
     <div>
-        <div>
+        <div className="buttons_group" style={{ flexDirection: "row" }} >
         <Link to="/FilterCity">
-            <button className="SearchButton" >City</button>
+            <button className="SearchButton" style={{ flexDirection: "row" }} >City</button>
         </Link>
         <Link to="/FilterSpec">
-        <button className="SearchButton" >Speciality</button>
+        <button className="SearchButton" style={{ flexDirection: "row" }} >Speciality</button>
         </Link>
         <Link to="/FilterSearch">
-        <button className="SearchButton" >Search</button>
+        <button className="SearchButton" style={{ flexDirection: "row" }} >Search</button>
         </Link>
         </div>
         <div className="wrapper-grid">
@@ -47,6 +47,7 @@ export default function Homepage() {
                 <Link to="/Schedule">
                     <button className='button'>Schedule Meeting</button>
                 </Link>
+                
             </div> 
         ))}
         </div>

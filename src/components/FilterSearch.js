@@ -31,7 +31,7 @@ export default function FilterSearch() {
     <div>
         <input
             type="text"
-            className="SearchButton"
+            className="input_search"
             value={temp_name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter Doctor's Name"

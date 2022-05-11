@@ -31,7 +31,7 @@ export default function FilterCity() {
     <div>
         <input
             type="text"
-            className="SearchButton"
+            className="input_search"
             value={temp_name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter City"
