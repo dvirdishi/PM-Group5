@@ -1,17 +1,36 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import mockdata from "../doctors.json";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 import "../index.css";
 
 const TableDoctors = () => {
-  const [tableData, setTableData] = useState(mockdata);
+  const [tableData, setTableData] = useState([]);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+
+  const getAllDocs = async () => 
+  {
+      const querySnapshot = await getDocs(collection(db, "users"));
+      let i = 0;
+      let tempData = []
+      querySnapshot.forEach((doc) => {
+        if(doc.data().isdoctor == "1")
+        {
+          tempData.push(doc.data());
+        }
+      i++;
+      });
+      return tempData;
+  }
+  
+  useEffect( () => {
+    getAllDocs().then(res => setTableData(res));
+   }, [])
  
   useEffect(() => {
     if (loading) return;
@@ -21,14 +40,14 @@ const TableDoctors = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: "Name", sortable: true },
-    { label: "Email", accessor: "Email", sortable: true },
-    { label: "Birthday", accessor: "Date", sortable: true },
-    { label: "Speciality", accessor: "Speciality", sortable: true },
-    { label: "Treatment", accessor: "Treatment", sortable: true },
-    { label: "Private Phone", accessor: "Private Phone", sortable: true },
-    { label: "Clinic Phone", accessor: "Clinic Phone", sortable: true },
-    { label: "Clinic Address", accessor: "Clinic Address", sortable: true },
+    { label: "Doctor's Name", accessor: "name", sortable: true },
+    { label: "Email", accessor: "email", sortable: true },
+    { label: "Birthday(Month)", accessor: "month", sortable: true },
+    { label: "Speciality", accessor: "speciality", sortable: true },
+    { label: "Treatment", accessor: "treatment", sortable: true },
+    { label: "Private Phone", accessor: "private_phone", sortable: true },
+    { label: "Clinic Phone", accessor: "clinic_phone", sortable: true },
+    { label: "Clinic Address", accessor: "address", sortable: true },
   ];
 
   const handleSorting = (sortField, sortOrder) => {
