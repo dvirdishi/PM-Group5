@@ -838,6 +838,26 @@ caption {
   text-align: left;
 }
 
+.table_row_green {
+  background: greenyellow;
+  font: bold;
+}
+
+.table_row_red {
+  background: rgb(235, 172, 172);
+  font: bold;
+}
+
+.table_row_grey {
+  background: rgb(216, 216, 216);
+  font: bold;
+}
+
+.table_row_white {
+  background: rgb(243, 239, 239);
+  font: bold;
+}
+
 .table th.up {
   background-image: url("./images/up_arrow.png");
 }
@@ -864,12 +884,9 @@ th.down {
   border-top: none;
 }
 
-.table tbody tr:nth-child(n) td {
-  background: #eff0f0;
-}
-
-.table tbody tr:nth-child(2n) td {
-  background: #fff;
+.MeetingsCounter{
+  text-align:"center";
+  margin-left: 45%;
 }
 
 /* //////////////MyMeetings/////////////// */

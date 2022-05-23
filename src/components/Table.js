@@ -67,6 +67,8 @@ const Table = () => {
   return (
     <>
     <br></br>
+    <h1 className="MeetingsCounter">Meetings: {tableData.length}</h1>
+    <br></br>
       <table className="table">
         <TableHead {...{ columns, handleSorting }} />
         <TableBody {...{ columns, tableData }} />
