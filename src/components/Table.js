@@ -1,18 +1,37 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import mockdata from "../data.json";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 import "../index.css";
 
 const Table = () => {
-  const [tableData, setTableData] = useState(mockdata);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  const [tableData, setTableData] = useState([]);
  
+  const getAllDocs = async () => 
+  {
+      const querySnapshot = await getDocs(collection(db, "appointments"));
+      let i = 0;
+      let tempData = []
+      querySnapshot.forEach((doc) => {
+        if(user.uid == doc.data().cid || user.uid == doc.data().did)
+        {
+          tempData.push(doc.data());
+        }
+      i++;
+      });
+      return tempData;
+  }
+  
+  useEffect( () => {
+    getAllDocs().then(res => setTableData(res));
+   }, [])
+
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/login");
@@ -21,12 +40,12 @@ const Table = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: "Doctor", sortable: true },
-    { label: "Client's Name", accessor: "Client", sortable: true },
-    { label: "Date", accessor: "Date", sortable: true },
-    { label: "Hour", accessor: "Hour", sortable: true },
-    { label: "Duration", accessor: "Duration", sortable: true },
-    { label: "Type", accessor: "Type", sortable: true },
+    { label: "Doctor's Name", accessor: "did", sortable: true },
+    { label: "Client's Name", accessor: "cid", sortable: true },
+    { label: "Date", accessor: "date", sortable: true },
+    { label: "Hour", accessor: "hour", sortable: true },
+    { label: "Duration", accessor: "duration", sortable: true },
+    { label: "Type", accessor: "type", sortable: true },
   ];
 
   const handleSorting = (sortField, sortOrder) => {

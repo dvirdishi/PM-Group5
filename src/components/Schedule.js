@@ -1,56 +1,46 @@
 import { Calendar } from "@progress/kendo-react-dateinputs";
 import React, { useEffect, useRef, useState } from "react";
-
+import { NewAppointment } from "../firebase";
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate, useParams} from "react-router-dom";
 
 let ButEnable=1;
 
-var today = new Date();//Current date variable
+    var today = new Date();//Current date variable
 
-let times = [
-    "08:00 - 10:00",
-    "10:00 - 12:00",
-    "12:00 - 14:00",
-    "14:00 - 16:00",
-    "16:00 - 18:00",
-    "18:00 - 20:00",
-];
+    let times = [
+        "08:00 - 08:30",
+        "09:00 - 09:30",
+        "10:00 - 10:30",
+        "11:00 - 11:30",
+        "12:00 - 12:30",
+        "13:00 - 13:30",
+        "14:00 - 14:30",
+    ];
 
-const getRandomNumInRange = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-};
 
-const pickSlotTimes = times => {
-    // Get a random number that will indicate how many time slots we pick
-    const timesToPick = getRandomNumInRange(0, times.length);
+    const pickSlotTimes = times => {
+            return times;
+    };
 
-    // If the random picked is the maximum possible then return all times
-    if (timesToPick === times.length - 1) {
-        return times;
-    }
-
-    let timesPicked = [];
-
-    // Loop until we have picked specified number of times
-    while (timesToPick !== timesPicked.length - 1) {
-        // Get a new index and time
-        const index = getRandomNumInRange(0, times.length);
-        const selectedTime = times[index];
-        // If we already picked that time we continue
-        // as we don't want duplicated
-        if (timesPicked.includes(selectedTime)) continue;
-        // Keep the time
-        timesPicked.push(selectedTime);
-    }
-
-    // We need to sort the times, as they may not be in correct order
-    return timesPicked.sort();
-};
-
-const Schedule = () => {
+export default function Schedule() {
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [bookingTimes, setBookingTimes] = useState([]);
     const timeSlotCacheRef = useRef(new Map());
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+    const {tempid} = useParams();
+
+    const Meeting = () => {
+            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes","Zoom");
+      };
+
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return navigate("/login");
+    }, [user, loading]);
 
     useEffect(() => {
         // Bail out if there is no date selected
@@ -115,12 +105,10 @@ const Schedule = () => {
             ) : null}
             {
                 <div >
-                    <button id="Book an appointment " disabled={ButEnable}>Book an appointment </button>
+                    <button id="Book an appointment " disabled={ButEnable} onClick={Meeting}>Book an appointment </button>
                 </div>
             }
         </div>
 </div>
     );
-};
-
-export default Schedule;
+}

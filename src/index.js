@@ -41,7 +41,7 @@ function App()
                     <Route path="/reset" element={<Reset />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/profile" element={<User />} />
-                    <Route path="/Schedule" element={<Schedule />} />
+                    <Route path="/Schedule/:tempid" element={<Schedule />} />
                     <Route path="/About" element={<About />} />
                     <Route path="/Policy" element={<Policy />} />
                     <Route path="/contact" element={<Mail />} />

@@ -15,7 +15,7 @@ import {
   getDocs,
   collection,
   where,
-  doc, setDoc
+  doc, setDoc,addDoc
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -119,6 +119,23 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
   }
 };
 
+const NewAppointment = async (did,cid,date,hour,duration,type) => {
+  try {
+    await addDoc(collection(db, "appointments"), {
+      did,
+      cid,
+      date,
+      hour,
+      duration,
+      type,
+    });
+    alert("New Appointment Added Successfully!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email)
@@ -141,4 +158,5 @@ export {
   sendPasswordReset,
   logout,
   registerNewDoctor,
+  NewAppointment,
 };
