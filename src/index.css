@@ -922,7 +922,7 @@ th.down {
   padding: 1rem;
   border-radius: 1rem;
   border: 2px solid hsl(0, 0%, 0%);
-  background-color: #949bac;
+  background-color: #c5cbda;
   list-style-type: none;
   width: 30%;
   height: 1%;
@@ -930,6 +930,21 @@ th.down {
   margin-bottom:1%;
   margin-right:35%;
   margin-left:39%;
+}
+
+.schedule__btn {
+  font-size: 15px;
+  font-style: bold;
+  color: white;
+  background-color: black;
+  border-radius: 1rem;
+  border: 10px solid hsl(0, 0%, 0%);
+}
+
+.schedule__btn2 {
+  color: rgb(236, 77, 77);
+  font-size: 15px;
+  font-style: bold;
 }
 
 /* //////////////Schedule/////////////// */
