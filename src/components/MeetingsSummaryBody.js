@@ -10,26 +10,23 @@ const MeetingsSummaryBody = ({ tableData, columns }) => {
     return (
       <tbody>
         {tableData.map((data) => {
-          const updateDocument = async () => 
+          const updateDocument_edit = async () => 
           {
-              {
-                const ref = doc(db, "appointments", data.id);
-                await updateDoc(ref, 
-                  {
-                    isdeleted: "1",
-                });
-              }
-              alert("Meeting Deleted.");
-              navigate("/");
+              
             }
           return (
             <tr key={data.id}>
               {columns.map(({ accessor }) => {
                 const tData = data[accessor] ? data[accessor] : "——";
-                if(data.isdeleted == "0")
-                {
-                  return <td className="table_row_white" key={accessor}>{tData}</td>;
-                }
+                  if(accessor == "button")
+                  {
+                    return <button className="button_edit" key={accessor} onClick={updateDocument_edit}>Edit</button>;
+                  }
+                  else
+                  {
+                    return <td className="table_row_white" key={accessor}>{tData}</td>;
+                  }
+                
               })}
             </tr>
           );

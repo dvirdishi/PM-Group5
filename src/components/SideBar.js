@@ -65,7 +65,7 @@ export default function SideBar() {
                 <Link to="/MyMeetings"></Link>
                 </MenuItem>
               <MenuItem active={IconActive} icon={<FiBookOpen />}>
-                Meetings Summary
+                Summaries
                 <Link to="/MeetingsSummary"></Link>
               </MenuItem>
             </Menu>

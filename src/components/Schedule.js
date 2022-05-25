@@ -1,6 +1,6 @@
 import { Calendar } from "@progress/kendo-react-dateinputs";
 import React, { useEffect, useRef, useState } from "react";
-import { NewAppointment } from "../firebase";
+import { NewAppointment, NewSummary } from "../firebase";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
@@ -37,6 +37,7 @@ export default function Schedule() {
 
     const Meeting = () => {
             NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
+            NewSummary(tempid,user.uid, bookingDate.toDateString(), "Empty");
             navigate("/");
       };
 

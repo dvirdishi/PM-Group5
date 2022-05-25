@@ -138,6 +138,22 @@ const NewAppointment = async (did,cid,date,hour,duration,type) => {
   }
 };
 
+const NewSummary = async (did,cid,date,summary) => {
+  try {
+    await addDoc(collection(db, "summaries"), {
+      did,
+      cid,
+      date,
+      summary,
+      button: " ",
+    });
+    alert("New Summary Added Successfully!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email)
@@ -161,4 +177,5 @@ export {
   logout,
   registerNewDoctor,
   NewAppointment,
+  NewSummary,
 };

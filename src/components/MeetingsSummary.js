@@ -4,7 +4,7 @@ import MeetingsSummaryBody from "./MeetingsSummaryBody";
 import MeetingsSummaryHead from "./MeetingsSummaryHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase";
+import { auth, db} from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "../index.css";
 
@@ -16,7 +16,7 @@ const MeetingsSummary = () => {
  
   const getAllDocs = async () => 
   {
-      const querySnapshot = await getDocs(collection(db, "appointments"));
+      const querySnapshot = await getDocs(collection(db, "summaries"));
       let i = 0;
       let tempData = []
       querySnapshot.forEach((doc) => {
@@ -33,7 +33,7 @@ const MeetingsSummary = () => {
   useEffect( () => {
     getAllDocs().then(res => setTableData(res));
    }, [])
-
+   
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/login");
@@ -45,7 +45,8 @@ const MeetingsSummary = () => {
     { label: "Doctor's Name", accessor: "did", sortable: true },
     { label: "Client's Name", accessor: "cid", sortable: true },
     { label: "Date", accessor: "date", sortable: true },
-    { label: "Meeting Summary", accessor: "date", sortable: true },
+    { label: "Meeting Summary", accessor: "summary", sortable: true },
+    { label: "Edit Summary", accessor: "button", sortable: false },
   ];
 
   const handleSorting = (sortField, sortOrder) => {
