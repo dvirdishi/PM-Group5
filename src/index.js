@@ -19,6 +19,7 @@ import * as serviceWorker from './components/serviceWorker';
 import FilterCity from "./components/FilterCity";
 import FilterSpec from "./components/FilterSpec";
 import FilterSearch from "./components/FilterSearch";
+import MeetingsSummary from "./components/MeetingsSummary";
 import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -50,6 +51,7 @@ function App()
                     <Route path="/FilterCity" element={<FilterCity />} />
                     <Route path="/FilterSpec" element={<FilterSpec />} />
                     <Route path="/FilterSearch" element={<FilterSearch />} />
+                    <Route path="/MeetingsSummary" element={<MeetingsSummary />} />
                 </Routes>
             </div>
         </Router>

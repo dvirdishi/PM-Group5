@@ -5,7 +5,7 @@ import {
   SidebarHeader,
   SidebarContent,
 } from "react-pro-sidebar";
-import { FiArrowLeftCircle, FiArrowRightCircle, FiUser} from "react-icons/fi";
+import { FiArrowLeftCircle, FiArrowRightCircle, FiUser,FiBookOpen} from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import "react-pro-sidebar/dist/css/styles.css";
 import React, { useEffect, useState } from "react";
@@ -64,6 +64,10 @@ export default function SideBar() {
                 My Meetings
                 <Link to="/MyMeetings"></Link>
                 </MenuItem>
+              <MenuItem active={IconActive} icon={<FiBookOpen />}>
+                Meetings Summary
+                <Link to="/MeetingsSummary"></Link>
+              </MenuItem>
             </Menu>
           </SidebarContent>
         </ProSidebar>
