@@ -65,6 +65,7 @@ export default function Schedule() {
 
     const onDateChange = e => {
         setSelectedTimeSlot(null);
+        setSelectedTypeSlot(null);
         setBookingDate(e.value);
         ButEnable=1;
         TypeEnable=1;
@@ -87,7 +88,7 @@ export default function Schedule() {
     };
 
     return (
-       <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+       <div className ="schedule_form" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
         <div className="k-my-8">
             <div className="k-mb-4 k-font-weight-bold">Appointments Schedule </div>
             <div className="k-flex k-display-flex k-mb-4">
@@ -113,7 +114,9 @@ export default function Schedule() {
 
             {bookingDate && selectedTimeSlot && selectedTypeSlot ? (
                 <div>
-                    Selected slot: {bookingDate.toDateString()} at {selectedTimeSlot}, meeting type:{selectedTypeSlot}
+                    <b>Selected slot: {bookingDate.toDateString()} at {selectedTimeSlot}</b>
+                    <br></br>
+                    <b>Meeting type: {selectedTypeSlot}</b>
                     <br></br>
                 </div>
             ) : null}
@@ -121,14 +124,14 @@ export default function Schedule() {
                 <div >
                     <div>
                         <br></br>
-                        <button id="Zoom " disabled={TypeEnable}  onClick={meeting_type_zoom}>Zoom </button>
+                        <button id="Zoom " disabled={TypeEnable}  onClick={meeting_type_zoom}><b>Zoom</b> </button>
                         &nbsp;&nbsp;&nbsp;
-                        <button id="FaceToFace " disabled={TypeEnable} onClick={meeting_type_FaceToFace}>FaceToFace </button>
+                        <button id="FaceToFace " disabled={TypeEnable} onClick={meeting_type_FaceToFace}><b>FaceToFace</b> </button>
                         <br></br>
                     </div>
                     <div>
                         <br></br>
-                        <button id="Book an appointment " disabled={ButEnable} onClick={Meeting}>Book an appointment </button>
+                        <button id="Book an appointment " disabled={ButEnable} onClick={Meeting}><b>Book an appointment</b> </button>
                     </div>
                 </div>
             }

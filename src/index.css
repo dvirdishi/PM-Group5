@@ -911,3 +911,25 @@ th.down {
 }
 /* //////////////Admin/////////////// */
 
+/* //////////////Schedule/////////////// */
+
+.schedule_form {
+  color: rgb(236, 77, 77);
+  font-style: bold;
+  text-align: left;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid hsl(0, 0%, 0%);
+  background-color: #949bac;
+  list-style-type: none;
+  width: 30%;
+  height: 1%;
+  margin-top :1%;
+  margin-bottom:1%;
+  margin-right:35%;
+  margin-left:39%;
+}
+
+/* //////////////Schedule/////////////// */
