@@ -37,6 +37,7 @@ export default function Schedule() {
 
     const Meeting = () => {
             NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
+            navigate("/");
       };
 
     useEffect(() => {
@@ -88,23 +89,22 @@ export default function Schedule() {
     };
 
     return (
-       <div className ="schedule_form" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '50vh'}}>
+       <div className ="schedule_form" style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '55vh'}}>
         <div className="k-my-8">
-            <div className="k-mb-4 k-font-weight-bold">Appointments Schedule </div>
+            <div style={{fontSize:"28px"}} className="k-mb-4 k-font-weight-bold">Appointments Schedule </div>
             <div className="k-flex k-display-flex k-mb-4">
                 <Calendar value={bookingDate} onChange={onDateChange}  min={new Date(today.getFullYear(), today.getMonth(), today.getDate())} />
 
                 <div className="k-ml-4 k-display-flex k-flex-col">
                     {bookingTimes.map(time => {
                         return (
-                            <button style={{backgroundColor:"white"}}
+                            <button style={{backgroundColor:"white", fontSize:"15px"}}
                                 key={time}
                                 className="k-button k-mb-4"
                                 onClick={() => disable_enable_button(time)}
                             >
                                 {time}
                             </button>
-
                         );
                     })}
 
@@ -124,14 +124,14 @@ export default function Schedule() {
                 <div >
                     <div>
                         <br></br>
-                        <button id="Zoom " disabled={TypeEnable}  onClick={meeting_type_zoom}><b>Zoom</b> </button>
+                        <button  className = "schedule__btn2" id="Zoom " disabled={TypeEnable}  onClick={meeting_type_zoom}>Zoom </button>
                         &nbsp;&nbsp;&nbsp;
-                        <button id="FaceToFace " disabled={TypeEnable} onClick={meeting_type_FaceToFace}><b>FaceToFace</b> </button>
+                        <button  className = "schedule__btn2" id="FaceToFace " disabled={TypeEnable} onClick={meeting_type_FaceToFace}>FaceToFace </button>
                         <br></br>
                     </div>
                     <div>
                         <br></br>
-                        <button id="Book an appointment " disabled={ButEnable} onClick={Meeting}><b>Book an appointment</b> </button>
+                        <button className= "schedule__btn" id="Book an appointment " disabled={ButEnable} onClick={Meeting}>Book an appointment </button>
                     </div>
                 </div>
             }
