@@ -10,8 +10,11 @@ const TableBody = ({ tableData, columns }) => {
     return (
       <tbody>
         {tableData.map((data) => {
-          const updateDocument = async () => 
-          {
+            const updateDocument_edit = () => {
+              navigate("/ScheduleEdit/"+ data.id);
+            };
+            const updateDocument_delete = async () => 
+            {
               {
                 const ref = doc(db, "appointments", data.id);
                 await updateDoc(ref, 
@@ -30,7 +33,10 @@ const TableBody = ({ tableData, columns }) => {
                 {
                   if(accessor == "button")
                   {
-                    return <button className="button_cancel" key={accessor} onClick={updateDocument}>Cancel</button>;
+                    return <div>
+                      <button className="button_cancel" key={accessor} onClick={updateDocument_delete}>Delete</button>;
+                      <button className="button_edit" key={accessor} onClick={updateDocument_edit}>Edit</button>;
+                    </div>
                   }
                   if(accessor == "date" && Date.parse(data[accessor]) < Date.parse(today))
                   {

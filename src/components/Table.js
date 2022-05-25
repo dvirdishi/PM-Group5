@@ -54,8 +54,7 @@ const Table = () => {
     { label: "Hour", accessor: "hour", sortable: true },
     { label: "Duration", accessor: "duration", sortable: true },
     { label: "Type", accessor: "type", sortable: true },
-    { label: "Cancel", accessor: "button", sortable: true },
-    
+    { label: "Edit/Delete", accessor: "button", sortable: false },
   ];
 
   const handleSorting = (sortField, sortOrder) => {
