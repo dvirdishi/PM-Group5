@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
 
 let ButEnable=1;
+let TypeEnable=1;
 
     var today = new Date();//Current date variable
 
@@ -27,6 +28,7 @@ let ButEnable=1;
 export default function Schedule() {
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+    const [selectedTypeSlot, setSelectedTypeSlot] = useState(null);
     const [bookingTimes, setBookingTimes] = useState([]);
     const timeSlotCacheRef = useRef(new Map());
     const [user, loading] = useAuthState(auth);
@@ -34,7 +36,7 @@ export default function Schedule() {
     const {tempid} = useParams();
 
     const Meeting = () => {
-            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes","Zoom");
+            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
       };
 
     useEffect(() => {
@@ -65,13 +67,24 @@ export default function Schedule() {
         setSelectedTimeSlot(null);
         setBookingDate(e.value);
         ButEnable=1;
+        TypeEnable=1;
     };
 
     function disable_enable_button(time)
     {
         setSelectedTimeSlot(time);
-        ButEnable=0;
+        TypeEnable=0;
     }
+    
+    const meeting_type_zoom = () => {
+        setSelectedTypeSlot("Zoom");
+        ButEnable=0;
+    };
+
+    const meeting_type_FaceToFace = () => {
+        setSelectedTypeSlot("FaceToFace");
+        ButEnable=0;
+    };
 
     return (
        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
@@ -98,14 +111,25 @@ export default function Schedule() {
 
             </div>
 
-            {bookingDate && selectedTimeSlot ? (
+            {bookingDate && selectedTimeSlot && selectedTypeSlot ? (
                 <div>
-                    Selected slot: {bookingDate.toDateString()} at {selectedTimeSlot}
+                    Selected slot: {bookingDate.toDateString()} at {selectedTimeSlot}, meeting type:{selectedTypeSlot}
+                    <br></br>
                 </div>
             ) : null}
             {
                 <div >
-                    <button id="Book an appointment " disabled={ButEnable} onClick={Meeting}>Book an appointment </button>
+                    <div>
+                        <br></br>
+                        <button id="Zoom " disabled={TypeEnable}  onClick={meeting_type_zoom}>Zoom </button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button id="FaceToFace " disabled={TypeEnable} onClick={meeting_type_FaceToFace}>FaceToFace </button>
+                        <br></br>
+                    </div>
+                    <div>
+                        <br></br>
+                        <button id="Book an appointment " disabled={ButEnable} onClick={Meeting}>Book an appointment </button>
+                    </div>
                 </div>
             }
         </div>
