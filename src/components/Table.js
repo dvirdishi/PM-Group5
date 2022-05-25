@@ -12,16 +12,24 @@ const Table = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
+  const [counter, setCounter] = useState(0);
  
   const getAllDocs = async () => 
   {
       const querySnapshot = await getDocs(collection(db, "appointments"));
       let i = 0;
       let tempData = []
+      let temp = 0;
       querySnapshot.forEach((doc) => {
         if(user.uid == doc.data().cid || user.uid == doc.data().did)
         {
           tempData.push(doc.data());
+          tempData[i].id = doc.id;
+          if(doc.data().isdeleted == "0")
+          {
+            temp = temp+1;
+            setCounter(temp);
+          }
         }
       i++;
       });
@@ -46,6 +54,8 @@ const Table = () => {
     { label: "Hour", accessor: "hour", sortable: true },
     { label: "Duration", accessor: "duration", sortable: true },
     { label: "Type", accessor: "type", sortable: true },
+    { label: "Cancel", accessor: "button", sortable: true },
+    
   ];
 
   const handleSorting = (sortField, sortOrder) => {
@@ -67,7 +77,7 @@ const Table = () => {
   return (
     <>
     <br></br>
-    <h1 className="MeetingsCounter">Meetings: {tableData.length}</h1>
+    <h1 className="MeetingsCounter">Meetings: {counter.toString()}</h1>
     <br></br>
       <table className="table">
         <TableHead {...{ columns, handleSorting }} />

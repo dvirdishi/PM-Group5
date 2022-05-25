@@ -128,6 +128,8 @@ const NewAppointment = async (did,cid,date,hour,duration,type) => {
       hour,
       duration,
       type,
+      isdeleted: "0",
+      button: " ",
     });
     alert("New Appointment Added Successfully!");
   } catch (err) {

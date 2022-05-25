@@ -812,6 +812,11 @@ html {
 
 /* //////////////MyMeetings/////////////// */
 
+.button_cancel{
+  font-size: 25px;
+  width: 100%;
+}
+
 .table_container {
   max-width: 750px;
   margin: 0 auto;
