@@ -46,7 +46,7 @@ const MeetingsSummary = () => {
     { label: "Client's Name", accessor: "cid", sortable: true },
     { label: "Date", accessor: "date", sortable: true },
     { label: "Meeting Summary", accessor: "summary", sortable: true },
-    { label: "Edit Summary", accessor: "button", sortable: false },
+    { label: "Edit Summary", accessor: "summary_button", sortable: false },
   ];
 
   const handleSorting = (sortField, sortOrder) => {

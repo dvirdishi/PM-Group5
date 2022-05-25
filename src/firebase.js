@@ -145,7 +145,7 @@ const NewSummary = async (did,cid,date,summary) => {
       cid,
       date,
       summary,
-      button: " ",
+      summary_button: " ",
     });
     alert("New Summary Added Successfully!");
   } catch (err) {

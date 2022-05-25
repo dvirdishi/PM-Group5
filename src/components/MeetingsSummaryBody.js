@@ -1,6 +1,4 @@
 import React from 'react';
-import { db } from "../firebase";
-import { doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 const MeetingsSummaryBody = ({ tableData, columns }) => {
@@ -10,15 +8,14 @@ const MeetingsSummaryBody = ({ tableData, columns }) => {
     return (
       <tbody>
         {tableData.map((data) => {
-          const updateDocument_edit = async () => 
-          {
-              
-            }
+          const updateDocument_edit = () => {
+            navigate("/MeetingsSummaryEdit/"+ data.id);
+          };
           return (
             <tr key={data.id}>
               {columns.map(({ accessor }) => {
                 const tData = data[accessor] ? data[accessor] : "——";
-                  if(accessor == "button")
+                  if(accessor == "summary_button")
                   {
                     return <button className="button_edit" key={accessor} onClick={updateDocument_edit}>Edit</button>;
                   }
