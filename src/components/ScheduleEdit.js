@@ -46,6 +46,11 @@ export default function ScheduleEdit() {
                     hour: selectedTimeSlot,
                     type: selectedTypeSlot,
                 });
+                const ref2 = doc(db, "summaries", tempid);
+                await updateDoc(ref2, 
+                  {
+                    date: bookingDate.toDateString(),
+                });
               }
               alert("Meeting Edited.");
               navigate("/");

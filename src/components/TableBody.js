@@ -21,6 +21,11 @@ const TableBody = ({ tableData, columns }) => {
                   {
                     isdeleted: "1",
                 });
+                const ref2 = doc(db, "summaries", data.id);
+                await updateDoc(ref2, 
+                  {
+                    isdeleted: "1",
+                });
               }
               alert("Meeting Deleted.");
               navigate("/");

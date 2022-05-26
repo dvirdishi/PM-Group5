@@ -15,6 +15,8 @@ const MeetingsSummaryBody = ({ tableData, columns }) => {
             <tr key={data.id}>
               {columns.map(({ accessor }) => {
                 const tData = data[accessor] ? data[accessor] : "——";
+                if(data.isdeleted == "0")
+                {
                   if(accessor == "summary_button")
                   {
                     return <button className="button_edit" key={accessor} onClick={updateDocument_edit}>Edit</button>;
@@ -23,7 +25,7 @@ const MeetingsSummaryBody = ({ tableData, columns }) => {
                   {
                     return <td className="table_row_white" key={accessor}>{tData}</td>;
                   }
-                
+                }
               })}
             </tr>
           );

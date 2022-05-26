@@ -37,9 +37,8 @@ export default function Schedule() {
 
     const Meeting = () => {
             NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
-            NewSummary(tempid,user.uid, bookingDate.toDateString(), "Empty");
             navigate("/");
-      };
+    };
 
     useEffect(() => {
         if (loading) return;

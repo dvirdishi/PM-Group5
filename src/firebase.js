@@ -121,7 +121,7 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
 
 const NewAppointment = async (did,cid,date,hour,duration,type) => {
   try {
-    await addDoc(collection(db, "appointments"), {
+    const res2 = await addDoc(collection(db, "appointments"), {
       did,
       cid,
       date,
@@ -130,7 +130,8 @@ const NewAppointment = async (did,cid,date,hour,duration,type) => {
       type,
       isdeleted: "0",
       button: " ",
-    });
+    })
+    NewSummary(res2.id,did,cid,date);
     alert("New Appointment Added Successfully!");
   } catch (err) {
     console.error(err);
@@ -138,16 +139,16 @@ const NewAppointment = async (did,cid,date,hour,duration,type) => {
   }
 };
 
-const NewSummary = async (did,cid,date,summary) => {
+const NewSummary = async (uid,did,cid,date) => {
   try {
-    await addDoc(collection(db, "summaries"), {
+    await setDoc(doc(db, "summaries", uid), {
       did,
       cid,
       date,
-      summary,
+      summary: "Empty",
+      isdeleted: "0",
       summary_button: " ",
     });
-    alert("New Summary Added Successfully!");
   } catch (err) {
     console.error(err);
     alert(err.message);
