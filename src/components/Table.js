@@ -30,8 +30,8 @@ const Table = () => {
             temp = temp+1;
             setCounter(temp);
           }
+          i++;
         }
-      i++;
       });
       return tempData;
   }

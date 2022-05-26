@@ -24,8 +24,8 @@ const MeetingsSummary = () => {
         {
           tempData.push(doc.data());
           tempData[i].id = doc.id;
+          i++;
         }
-      i++;
       });
       return tempData;
   }
