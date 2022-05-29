@@ -20,6 +20,7 @@ import * as serviceWorker from './components/serviceWorker';
 import FilterCity from "./components/FilterCity";
 import FilterSpec from "./components/FilterSpec";
 import FilterSearch from "./components/FilterSearch";
+import CalendarAdjustments from "./components/CalendarAdjustments";
 import MeetingsSummary from "./components/MeetingsSummary";
 import MeetingsSummaryEdit from "./components/MeetingsSummaryEdit";
 import './index.css';
@@ -54,8 +55,12 @@ function App()
                     <Route path="/FilterCity" element={<FilterCity />} />
                     <Route path="/FilterSpec" element={<FilterSpec />} />
                     <Route path="/FilterSearch" element={<FilterSearch />} />
+
+                    <Route path="/CalendarAdjustments" element={<CalendarAdjustments />} />
+
                     <Route path="/MeetingsSummary" element={<MeetingsSummary />} />
                     <Route path="/MeetingsSummaryEdit/:tempid" element={<MeetingsSummaryEdit />} />
+
                 </Routes>
             </div>
         </Router>

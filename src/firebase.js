@@ -112,6 +112,7 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
       treatment,
       private_phone: "Empty", clinic_phone, address, isdoctor:"1",
     });
+    DoctorSettings(user.uid);
     auth.signOut();
   } catch (err) {
     console.error(err);
@@ -168,6 +169,29 @@ const sendPasswordReset = async (email) => {
 const logout = () => {
   signOut(auth);
 };
+//q- what about arrays?
+// how to link uid
+const DoctorSettings = async (uid) => {
+  try {
+    await setDoc(doc(db, "doctor_settings", uid), {
+      uid,
+      workdays,//7 days
+      work_from,//7 days
+      work_until,//7 days
+      break_from,//7 days
+      break_until,//7 days
+      vaction_from,//date
+      vaction_until,// date
+      duration_one,// number (minutes)
+      duration_two// number minutes
+    });
+    alert("Calendar setting updated");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
 export {
   auth,
   db,
@@ -178,5 +202,9 @@ export {
   logout,
   registerNewDoctor,
   NewAppointment,
+
+  DoctorSettings,
+
   NewSummary,
+
 };
