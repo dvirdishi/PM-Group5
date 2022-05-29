@@ -122,15 +122,34 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
 
 const NewAppointment = async (did,cid,date,hour,duration,type) => {
   try {
-    await addDoc(collection(db, "appointments"), {
+    const res2 = await addDoc(collection(db, "appointments"), {
       did,
       cid,
       date,
       hour,
       duration,
       type,
-    });
+      isdeleted: "0",
+      button: " ",
+    })
+    NewSummary(res2.id,did,cid,date);
     alert("New Appointment Added Successfully!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const NewSummary = async (uid,did,cid,date) => {
+  try {
+    await setDoc(doc(db, "summaries", uid), {
+      did,
+      cid,
+      date,
+      summary: "Empty",
+      isdeleted: "0",
+      summary_button: " ",
+    });
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -183,5 +202,9 @@ export {
   logout,
   registerNewDoctor,
   NewAppointment,
+
   DoctorSettings,
+
+  NewSummary,
+
 };

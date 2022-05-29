@@ -1,35 +1,29 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import TableBody from "./TableBody";
-import TableHead from "./TableHead";
+import MeetingsSummaryBody from "./MeetingsSummaryBody";
+import MeetingsSummaryHead from "./MeetingsSummaryHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase";
+import { auth, db} from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "../index.css";
 
-const Table = () => {
+
+const MeetingsSummary = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
-  const [counter, setCounter] = useState(0);
  
   const getAllDocs = async () => 
   {
-      const querySnapshot = await getDocs(collection(db, "appointments"));
+      const querySnapshot = await getDocs(collection(db, "summaries"));
       let i = 0;
       let tempData = []
-      let temp = 0;
       querySnapshot.forEach((doc) => {
         if(user.uid == doc.data().cid || user.uid == doc.data().did)
         {
           tempData.push(doc.data());
           tempData[i].id = doc.id;
-          if(doc.data().isdeleted == "0")
-          {
-            temp = temp+1;
-            setCounter(temp);
-          }
           i++;
         }
       });
@@ -39,7 +33,7 @@ const Table = () => {
   useEffect( () => {
     getAllDocs().then(res => setTableData(res));
    }, [])
-
+   
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/login");
@@ -51,10 +45,8 @@ const Table = () => {
     { label: "Doctor's Name", accessor: "did", sortable: true },
     { label: "Client's Name", accessor: "cid", sortable: true },
     { label: "Date", accessor: "date", sortable: true },
-    { label: "Hour", accessor: "hour", sortable: true },
-    { label: "Duration", accessor: "duration", sortable: true },
-    { label: "Type", accessor: "type", sortable: true },
-    { label: "Edit/Delete", accessor: "button", sortable: false },
+    { label: "Meeting Summary", accessor: "summary", sortable: true },
+    { label: "Edit Summary", accessor: "summary_button", sortable: false },
   ];
 
   const handleSorting = (sortField, sortOrder) => {
@@ -76,14 +68,12 @@ const Table = () => {
   return (
     <>
     <br></br>
-    <h1 className="MeetingsCounter">Meetings: {counter.toString()}</h1>
-    <br></br>
       <table className="table">
-        <TableHead {...{ columns, handleSorting }} />
-        <TableBody {...{ columns, tableData }} />
+        <MeetingsSummaryHead {...{ columns, handleSorting }} />
+        <MeetingsSummaryBody {...{ columns, tableData }} />
       </table>
     </>
   );
 };
 
-export default Table;
+export default MeetingsSummary;

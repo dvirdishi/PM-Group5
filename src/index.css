@@ -897,6 +897,18 @@ html {
 
 /* //////////////MyMeetings/////////////// */
 
+.button_cancel{
+  font-size: 25px;
+  width: 97.6%;
+  text-align: center;
+}
+
+.button_edit{
+  font-size: 25px;
+  width: 97.6%;
+  text-align: center;
+}
+
 .table_container {
   max-width: 750px;
   margin: 0 auto;
@@ -908,6 +920,8 @@ html {
   border-spacing: 0;
   margin-left: 4%;
 }
+
+
 
 caption {
   font-style: italic;
@@ -976,7 +990,60 @@ th.down {
 
 /* //////////////MyMeetings/////////////// */
 
-/* //////////////MyMeetings/////////////// */
+/* //////////////MeetingsSummary/////////////// */
+
+
+.MeetingsSummary{
+  width: 95.8%;
+  border-spacing: 0;
+  margin-left: 4%;
+}
+
+.MeetingsSummary_container {
+  max-width: 750px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.MeetingsSummary tbody tr:first-child td {
+  border-top: none;
+}
+
+
+
+.MeetingsSummary td {
+  border-top: 1px solid #ddd;
+  padding: 8px 20px;
+}
+
+.MeetingsSummary th.up {
+  background-image: url("./images/up_arrow.png");
+}
+.MeetingsSummary th.down {
+  background-image: url("./images/down_arrow.png");
+}
+.MeetingsSummary th.default {
+  background-image: url("./images/default.png");
+}
+
+.MeetingsSummary th {
+  background: #fff;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1a1a1a;
+  font-weight: bold;
+  text-align: left;
+}
+
+th.up,
+th.default,
+th.down {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+
+/* //////////////MeetingsSummary/////////////// */
 
 /* //////////////Admin/////////////// */
 
@@ -1007,14 +1074,29 @@ th.down {
   padding: 1rem;
   border-radius: 1rem;
   border: 2px solid hsl(0, 0%, 0%);
-  background-color: #949bac;
+  background-color: white;
   list-style-type: none;
   width: 30%;
   height: 1%;
-  margin-top :1%;
+  margin-top :5%;
   margin-bottom:1%;
   margin-right:35%;
   margin-left:39%;
+}
+
+.schedule__btn {
+  font-size: 15px;
+  font-style: bold;
+  color: white;
+  background-color: black;
+  border-radius: 1rem;
+  border: 10px solid hsl(0, 0%, 0%);
+}
+
+.schedule__btn2 {
+  color: rgb(236, 77, 77);
+  font-size: 15px;
+  font-style: bold;
 }
 
 /* //////////////Schedule/////////////// */

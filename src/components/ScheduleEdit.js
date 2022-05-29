@@ -1,9 +1,10 @@
 import { Calendar } from "@progress/kendo-react-dateinputs";
 import React, { useEffect, useRef, useState } from "react";
-import { NewAppointment, NewSummary } from "../firebase";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 let ButEnable=1;
 let TypeEnable=1;
@@ -25,7 +26,7 @@ let TypeEnable=1;
             return times;
     };
 
-export default function Schedule() {
+export default function ScheduleEdit() {
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [selectedTypeSlot, setSelectedTypeSlot] = useState(null);
@@ -35,10 +36,26 @@ export default function Schedule() {
     const navigate = useNavigate();
     const {tempid} = useParams();
 
-    const Meeting = () => {
-            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
-            navigate("/");
-    };
+    const updateDocument_edit = async () => 
+          {
+              {
+                const ref = doc(db, "appointments", tempid);
+                await updateDoc(ref, 
+                  {
+                    date: bookingDate.toDateString(),
+                    hour: selectedTimeSlot,
+                    type: selectedTypeSlot,
+                });
+                const ref2 = doc(db, "summaries", tempid);
+                await updateDoc(ref2, 
+                  {
+                    date: bookingDate.toDateString(),
+                });
+              }
+              alert("Meeting Edited.");
+              navigate("/");
+            }
+
 
     useEffect(() => {
         if (loading) return;
@@ -131,7 +148,7 @@ export default function Schedule() {
                     </div>
                     <div>
                         <br></br>
-                        <button className= "schedule__btn" id="Book an appointment " disabled={ButEnable} onClick={Meeting}>Book an appointment </button>
+                        <button className= "schedule__btn" id="Book an appointment " disabled={ButEnable} onClick={updateDocument_edit}>Edit an appointment </button>
                     </div>
                 </div>
             }
