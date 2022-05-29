@@ -341,7 +341,92 @@ button_dash:hover {
   cursor: pointer;
 }
 
-/* //////////////User/////////////// */
+/* //////////////calendarAdjustments/////////////// */
+div.adj {
+  vertical-align: center;
+
+  margin: 0.5em;
+  height: 32px;
+  background-color: white;
+  padding: 30px;
+  margin: auto;
+  margin-top: 15px;
+  width: 90%;
+  height: 95%;
+  border-radius: 1em;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.205);
+}
+div.workdays{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  gap: 35px;
+  grid-auto-flow: column;
+
+}
+div.work_hours{
+  padding: 15px;
+  display: grid;
+  justify-content: center;
+  place-items: center;
+  align-content: center;
+  gap: 65px;
+  grid-auto-flow: column;
+}
+
+
+
+div.timeBox{
+  display: grid;
+ 
+  gap: 65px;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+
+}
+h2.h2_adj{
+text-align: center;}
+
+div.vacDate{
+  display: grid;
+ 
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+div.datesgrid{
+  padding: 15px;
+  display: grid;
+  justify-content: center;
+  place-items: center;
+  align-content: center;
+  gap: 15px;
+  grid-auto-flow: column;
+}
+
+div.appoint{
+  padding: 15px;
+  display: grid;
+  justify-content: center;
+  place-items: center;
+  align-content: center;
+  gap: 15px;
+  grid-auto-flow: column;
+}
+div.appoint_thing{
+  display: grid;
+ 
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
 
 /* //////////////Register/////////////// */
 

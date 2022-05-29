@@ -24,7 +24,9 @@ export default function Navbar()
                 <Link to="/contact">
                     <button className="btn"><b><li className="li">Contact</li></b></button>
                 </Link>
-
+                <Link to="/CalendarAdjustments">
+                    <button className="btn"><b><li className="li">Calendar Adjustments</li></b></button>
+                </Link>
 
 
             </ul>
