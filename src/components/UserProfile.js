@@ -70,12 +70,8 @@ if(stored.isdoctor==0){
             <h2_dash>Private Phone:</h2_dash> {stored.private_phone}
         </Group>
         </div>
-        
-        
         <div>
-                <button_dash
-                    onClick={startEditCallback}
-                >Edit</button_dash>
+                <button_dash onClick={startEditCallback} >Edit</button_dash>
             </div>
     </div>
         

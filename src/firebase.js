@@ -15,7 +15,7 @@ import {
   getDocs,
   collection,
   where,
-  doc, setDoc,addDoc
+  doc, setDoc,addDoc,Timestamp 
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -175,15 +175,11 @@ const DoctorSettings = async (uid) => {
   try {
     await setDoc(doc(db, "doctor_settings", uid), {
       uid,
-      workdays,//7 days
-      work_from,//7 days
-      work_until,//7 days
-      break_from,//7 days
-      break_until,//7 days
-      vaction_from,//date
-      vaction_until,// date
-      duration_one,// number (minutes)
-      duration_two// number minutes
+      workdays: [false,false,false,false,false,false,false],//7 days
+      vaction_from: Timestamp.fromDate(new Date()),//date
+      vaction_until: Timestamp.fromDate(new Date()),// date
+      duration_one: 10,// number (minutes)
+      duration_two: 10// number minutes
     });
     alert("Calendar setting updated");
   } catch (err) {
@@ -202,9 +198,6 @@ export {
   logout,
   registerNewDoctor,
   NewAppointment,
-
   DoctorSettings,
-
   NewSummary,
-
 };

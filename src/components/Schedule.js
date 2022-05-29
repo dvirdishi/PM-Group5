@@ -1,6 +1,6 @@
 import { Calendar } from "@progress/kendo-react-dateinputs";
 import React, { useEffect, useRef, useState } from "react";
-import { NewAppointment, NewSummary } from "../firebase";
+import { NewAppointment } from "../firebase";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
@@ -17,7 +17,6 @@ let TypeEnable=1;
         "11:00 - 11:30",
         "12:00 - 12:30",
         "13:00 - 13:30",
-        "14:00 - 14:30",
     ];
 
 

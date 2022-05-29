@@ -7,15 +7,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 export default function CalendarAdjustments({stored, startEditCallback }) {
 
-    console.log()
-//inside div, add another field, copy from name and adjust
-
     return(
-
         <div className= 'adj'>
         <h2 className='h2_adj'>Workdays</h2>
         <div className= 'workdays'>
-    
         <br></br>
         <FormGroup aria-label="position" row>
          <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Sunday" labelPlacement="top" />
@@ -26,46 +21,57 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
          <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Friday" labelPlacement="top" />
          <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Saturday" labelPlacement="top" />
         </FormGroup>
-        
-       
         <br></br>
         <br></br>
     </div>
-        <h2 className='h2_adj'>Working Hours</h2>
-        <div className='' >
-            <div className= 'work_hours'>
-                <h3>Work From</h3>{stored.WorkFrom}
-           </div>
-        <div className= 'work_hours'>
-                 <h3>Work Until</h3>{stored.WorkUntil}
-           </div>
-          
-    <div className= 'work_hours'>
-                 <h3>Break From</h3>{stored.BreakFrom}
-
-           </div>
-        <div className= 'work_hours'>
-                  <h3>Break Until</h3>{stored.BreakUntil}
-           </div>
-           <div className= 'work_hours'>
-                  <h3>Vacantion</h3>{stored.VactionFrom}
-                  {stored.VactionUntil}
-           </div>
-           <br></br>
+            <h2 className='h2_adj'>Vacantion</h2>
+            <div className='datesgrid'>
+            <div className= 'vacDate'>
+            <input readOnly
+                type='date'
+                value={stored.VactionFrom}
+            />
+            </div>
+            <div className= 'vacDate'>
+            <input readOnly
+                type='date'
+                value={stored.VactionUntil}
+            />
+            </div>
+       </div>
        <br></br>
-           <h2 className='h2_adj'>Appointment Settings</h2>
-           <h3>Face to Face</h3>{stored.durationOne}
-           <h3>Zoom</h3>{stored.durationTwo}
+       <br></br>
+       <h2 className='h2_adj'>Appointment Settings</h2>
 
-           <div>
-        <button className='button_dash'
-            onClick={startEditCallback}
-        >Edit</button>
-    </div>
-          
-    </div>
-    </div>
-        
+            <div className='appoint'>
+            <div className= 'appoint_thing'>
+            <h3>Face to Face</h3>
+            </div>
+            <div className= 'appoint_thing'>
+            <input readOnly
+                type='number'
+                placeholder='Duration'
+                value={stored.durationOne}
+            />
+            </div>
+       </div>
+       <div className='appoint'>
+            <div className= 'appoint_thing'>
+            <h3>Zoom</h3>
+            </div>
+            <div className= 'appoint_thing'>
+            <input readOnly
+                type='number'
+                placeholder='Duration'
+                value={stored.durationTwo}
+            />
+            </div>
+       </div>
+       <br></br>
+    <div>
+        <button_dash onClick={startEditCallback} >Edit</button_dash>
+    </div>   
+    </div>  
     );
    }
 
