@@ -56,6 +56,7 @@ const signInWithGoogle = async () => {
       });
     }
     alert("Logged In Successfully!");
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -64,6 +65,8 @@ const signInWithGoogle = async () => {
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    alert("Logged In Successfully!");
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -89,6 +92,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
     }));
     alert("User Added Successfully!");
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -114,6 +118,7 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
     });
     DoctorSettings(user.uid);
     auth.signOut();
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -168,6 +173,7 @@ const sendPasswordReset = async (email) => {
 
 const logout = () => {
   signOut(auth);
+  window.location.reload(false);
 };
 //q- what about arrays?
 // how to link uid
@@ -181,7 +187,6 @@ const DoctorSettings = async (uid) => {
       duration_one: 10,// number (minutes)
       duration_two: 10// number minutes
     });
-    alert("Calendar setting updated");
   } catch (err) {
     console.error(err);
     alert(err.message);

@@ -154,6 +154,7 @@ export default function SideBar() {
               <Menu iconShape="square">
                 <MenuItem active={IconActive} icon={<FiAlignJustify />}>
                   Admin Panel
+                  <Link to="/Adminpanel"></Link>
                 </MenuItem>
               </Menu>
             </SidebarContent>

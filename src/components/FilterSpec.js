@@ -16,7 +16,7 @@ export default function FilterSpec() {
         let tempData = []
         querySnapshot.forEach((doc) => {
             tempData.push(doc.data());
-            tempData[i].uid = doc.data().uid;
+            tempData[i].id = doc.data().id;
         i++;
         });
         return tempData;
@@ -37,7 +37,7 @@ export default function FilterSpec() {
         />
         <div className="wrapper-grid">
             {data && data.map((doc) => doc.isdoctor === '1' && doc.speciality == temp_name &&(
-            <div key={doc.uid} className="container">
+            <div key={doc.id} className="container">
                 <div className='banner-img'></div>
                 <img src={Doctor} alt='profile image' className="profile-img"></img>
                 <h1 className="name">{doc.name}</h1>
@@ -51,9 +51,3 @@ export default function FilterSpec() {
     </div>
     )
 }
-
-
-
-
-
-

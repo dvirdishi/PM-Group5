@@ -73,7 +73,6 @@ function User() {
     <div>
         <div className="BottomMessageBar">
             <img src={DONA} alt='profile image' className="ButtomBarPic"></img>
-            <h1 className='h1_Message'>Donacontactmail@gmail.com</h1>
             <h1 className='h2_Message'><span >Logged In As</span> <span className='user_h1'>{nameos}</span></h1>
         </div>
         <div className="container_dash">
