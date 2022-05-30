@@ -15,7 +15,7 @@ import {
   getDocs,
   collection,
   where,
-  doc, setDoc,addDoc,Timestamp 
+  doc, setDoc,addDoc
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -176,8 +176,8 @@ const DoctorSettings = async (uid) => {
     await setDoc(doc(db, "doctor_settings", uid), {
       uid,
       free_day: "Sunday",
-      vaction_from: fromDate(new Date()),//date
-      vaction_until: fromDate(new Date()),// date
+      vaction_from: new Date(),//date
+      vaction_until: new Date(),// date
       duration_one: 10,// number (minutes)
       duration_two: 10// number minutes
     });
