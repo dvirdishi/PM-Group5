@@ -27,6 +27,6 @@ export default {
     getMaxDays: i => months[i].maxDays,
     getMonths: () => months,
     getDays: () => days,
-    getFullDays: i => days[i].fullName,
-    getShortDays: i=> days[i].shortName,
+    getFullDays: i => days[i]?.fullName,
+    getShortDays: i=> days[i]?.shortName,
 }
