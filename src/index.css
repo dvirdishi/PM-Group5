@@ -1061,6 +1061,67 @@ th.down {
   border-radius: 1rem;
   border: 1px solid hsl(0, 0%, 0%);
 }
+
+.table_container {
+  max-width: 750px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.admin_table {
+  width: 95.8%;
+  border-spacing: 0;
+  margin-left: 4%;
+}
+
+caption {
+  font-style: italic;
+  font-size: 90%;
+  margin-bottom: 10px;
+}
+
+.admin_table th {
+  background: #fff;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1a1a1a;
+  font-weight: bold;
+  text-align: left;
+}
+
+.admin_table th.up {
+  background-image: url("./images/up_arrow.png");
+}
+.admin_table th.down {
+  background-image: url("./images/down_arrow.png");
+}
+.admin_table th.default {
+  background-image: url("./images/default.png");
+}
+th.up,
+th.default,
+th.down {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.admin_table td {
+  border-top: 1px solid #ddd;
+  padding: 8px 20px;
+}
+
+.admin_table tbody tr:first-child td {
+  border-top: none;
+}
+
+.admin_table tbody tr:nth-child(n) td {
+  background: #eff0f0;
+}
+
+.admin_table tbody tr:nth-child(2n) td {
+  background: #fff;
+}
+
 /* //////////////Admin/////////////// */
 
 /* //////////////Schedule/////////////// */

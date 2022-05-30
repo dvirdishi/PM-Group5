@@ -4,6 +4,8 @@ import { NewAppointment } from "../firebase";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 let ButEnable=1;
 let TypeEnable=1;
@@ -25,6 +27,8 @@ let TypeEnable=1;
     };
 
 export default function Schedule() {
+    const [MyData, setMyData] = useState([]);
+    const [OthersData, setOthersData] = useState([]);
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [selectedTypeSlot, setSelectedTypeSlot] = useState(null);
@@ -34,9 +38,72 @@ export default function Schedule() {
     const navigate = useNavigate();
     const {tempid} = useParams();
 
+    const GetOthersData = async () => 
+  {
+      const querySnapshot = await getDocs(collection(db, "appointments"));
+      let i = 0;
+      let tempData = []
+      querySnapshot.forEach((doc) => {
+        if(user.uid != doc.data().cid && user.uid != doc.data().did)
+        {
+          tempData.push(doc.data());
+          tempData[i].id = doc.id;
+          i++;
+        }
+      });
+      return tempData;
+  }
+
+  useEffect( () => {
+    GetOthersData().then(res => setOthersData(res));
+   }, [])
+
+  const GetMyMeetings = async () => 
+  {
+      const querySnapshot = await getDocs(collection(db, "appointments"));
+      let i = 0;
+      let tempData = []
+      querySnapshot.forEach((doc) => {
+        if(user.uid == doc.data().cid || user.uid == doc.data().did)
+        {
+          tempData.push(doc.data());
+          tempData[i].id = doc.id;
+          i++;
+        }
+      });
+      return tempData;
+  }
+
+  useEffect( () => {
+    GetMyMeetings().then(res => setMyData(res));
+   }, [])
+
     const Meeting = () => {
+        let i =0;
+        let flag = 0;
+        for(i =0;i<MyData.length;i++)
+        {
+            if(bookingDate.toDateString() == MyData[i].date && MyData[i].did == tempid)
+            {
+                alert("You Already Have A Meeting In That Date.");
+                flag = 1;
+            }
+        }
+        ///////////////////////////
+        for(i =0;i<OthersData.length;i++)
+        {
+            if(bookingDate.toDateString() == OthersData[i].date && OthersData[i].did == tempid)
+            {
+                alert("Someone Already Have A Meeting In That Date.");
+                flag = 1;
+            }
+        }
+        ///////////////////////////
+        if(flag == 0)
+        {
             NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
             navigate("/");
+        }
     };
 
     useEffect(() => {
