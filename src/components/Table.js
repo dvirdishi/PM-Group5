@@ -12,10 +12,6 @@ import "../index.css";
 const Table = () => {
   const [user, loading] = useAuthState(auth);
   const [Temp_isdoctor,setIsDoctor] = useState([]);
-  const [temp_cid,setCid] = useState([]);
-  const [temp_did,setDid] = useState([]);
-  const [ClentName,setClentName] = useState([]);
-  const [DoctorName,setDoctorName] = useState([]);
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
   const [counter, setCounter] = useState(0);
@@ -26,30 +22,12 @@ const Table = () => {
     const data = doc.docs[0].data();
     setIsDoctor(data.isdoctor);
     };
-    
-  const fetchClientName = async () => {
-    const q = query(collection(db, "users"), where("uid", "==", temp_cid));
-    console.log("Temp Cid" + temp_cid);
-    const doc = await getDocs(q);
-    const data = doc.docs[0].data();
-    setClentName(data.name);
-    };
-    
-  const fetchDoctorName = async () => {
-    const q = query(collection(db, "users"), where("uid", "==", temp_did));
-    console.log("Temp Cid" + temp_did);
-    const doc = await getDocs(q);
-    const data = doc.docs[0].data();
-    setDoctorName(data.name);
-    };
 
     useEffect(() => {
       if (loading) return;
       if (!user) return navigate("/login");
       if(user && user.email == "donacontactmail@gmail.com") return navigate("/Adminpanel");
       fetchUserName();
-      fetchClientName();
-      fetchDoctorName();
     }, [user, loading]);
  
   const getAllDocs = async () => 
@@ -61,8 +39,6 @@ const Table = () => {
       querySnapshot.forEach((doc) => {
         if(user.uid == doc.data().cid || user.uid == doc.data().did)
         {
-          setDid(doc.data().did);
-          setCid(doc.data().cid);
           tempData.push(doc.data());
           tempData[i].id = doc.id;
           if(doc.data().isdeleted == "0")
@@ -82,8 +58,8 @@ const Table = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: DoctorName, sortable: true },
-    { label: "Client's Name", accessor: ClentName, sortable: true },
+    { label: "Doctor's Name", accessor: "did", sortable: true },
+    { label: "Client's Name", accessor: "cid", sortable: true },
     { label: "Date", accessor: "date", sortable: true },
     { label: "Hour", accessor: "hour", sortable: true },
     { label: "Duration", accessor: "duration", sortable: true },
@@ -108,12 +84,7 @@ const Table = () => {
   };
 
   const DownloadAtt = () => {
-    // let dataCopy=Table().tableData;
-    // console.log(dataCopy[1].did);
     var today = new Date();
-
-
-
     const downloadTxtFile = () => {
       let TodayClients="Clients Of Today's List:\n";
 

@@ -118,7 +118,7 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
             <input
                 type='number'
                 placeholder='Duration'
-                min={5}
+                min={0}
                 value={durationOne}
                 onChange={e => setDurationOne(e.target.value)}
                 style={{width: "50px"}}
@@ -133,7 +133,7 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
             <div className= 'appoint_thing'>
             <input
                 type='number'
-                min={5}
+                min={0}
                 placeholder='Duration'
 
                 value={durationTwo}
