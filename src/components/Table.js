@@ -8,6 +8,7 @@ import { auth, db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "../index.css";
 
+
 const Table = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -73,11 +74,49 @@ const Table = () => {
     }
   };
 
+  const DownloadAtt = () => {
+    // let dataCopy=Table().tableData;
+    // console.log(dataCopy[1].did);
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+
+
+    const downloadTxtFile = () => {
+      let TodayClients="Clients Of Today's List:\n";
+
+      for (let i = 0; i < tableData.length; i++) {
+        if(tableData[i].date==today.toDateString())
+        {
+          TodayClients += tableData[i].did + "\n";
+        }
+      }
+      const element = document.createElement("a");
+      const file = new Blob([TodayClients], {
+        type: "text/plain"
+      });
+      element.href = URL.createObjectURL(file);
+      element.download = "Clients Of Today List.txt";
+      document.body.appendChild(element);
+      element.click();
+    };
+
+    return (
+        <div>
+          <button onClick={downloadTxtFile} style={{marginLeft:-15, backgroundColor:"lightblue" } }>Download Todays Meeting TXT File</button>
+        </div>
+    );
+  };
+
   return (
     <>
     <br></br>
     <h1 className="MeetingsCounter">Meetings: {counter.toString()}</h1>
     <br></br>
+      <h2 className="MeetingsCounter">{DownloadAtt()}</h2>
+      <br></br>
       <table className="table">
         <TableHead {...{ columns, handleSorting }} />
         <TableBody {...{ columns, tableData }} />
