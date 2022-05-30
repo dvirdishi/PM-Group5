@@ -55,9 +55,7 @@ function App()
                     <Route path="/FilterCity" element={<FilterCity />} />
                     <Route path="/FilterSpec" element={<FilterSpec />} />
                     <Route path="/FilterSearch" element={<FilterSearch />} />
-
                     <Route path="/CalendarAdjustments" element={<CalendarAdjustments />} />
-
                     <Route path="/MeetingsSummary" element={<MeetingsSummary />} />
                     <Route path="/MeetingsSummaryEdit/:tempid" element={<MeetingsSummaryEdit />} />
 
