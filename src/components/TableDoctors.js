@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import TableBody from "./TableBody";
-import TableHead from "./TableHead";
+import TableDoctorBody from "./TableDoctorBody";
+import TableDoctorHead from "./TableDoctorHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
@@ -69,9 +69,9 @@ const TableDoctors = () => {
   return (
     <>
     <br></br>
-      <table className="table">
-        <TableHead {...{ columns, handleSorting }} />
-        <TableBody {...{ columns, tableData }} />
+      <table className="admin_table">
+        <TableDoctorHead {...{ columns, handleSorting }} />
+        <TableDoctorBody {...{ columns, tableData }} />
       </table>
     </>
   );
