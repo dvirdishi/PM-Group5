@@ -14,7 +14,7 @@ const months = [
 ];
 const days = [
     { shortName: "Sun", fullName: "Sunday"},
-    { shortName: "Mon",fullName: "Monday"},
+    { shortName: "Mon", fullName: "Monday"},
     { shortName: "Tue", fullName: "Tuesday"},
     { shortName: "Wed", fullName: "Wednesday"},
     { shortName: "Thu", fullName: "Thursday"},
@@ -26,7 +26,7 @@ export default {
     getShortName: i => months[i].shortName,
     getMaxDays: i => months[i].maxDays,
     getMonths: () => months,
-    getShortDays: i=> days[i].shortName,
-    getFullDays: i => days[i].fullName,
     getDays: () => days,
+    getFullDays: i => days[i].fullName,
+    getShortDays: i=> days[i].shortName,
 }

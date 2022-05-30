@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db} from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+
 import "../index.css";
 
 function CalendarAdjustments() {

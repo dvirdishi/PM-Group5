@@ -9,8 +9,7 @@ function renderDaysOptions() {
     return months.getDays().map( (m, i) => {
         return <option
             key={i}
-            value={i}
-        >
+            value={i}>
             {m.fullName}
         </option>
     });
@@ -71,21 +70,23 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
     }, [user, loading]);
 
   return (
-    <div className= 'adj'>
-    <h2 className='h2_adj'>Day-off</h2>
+      
+    <div className= ''>
+       <br></br>
+    
+    <h3 className='h3_adj'>Day-off</h3>
     <div className= 'workdays'>
 
-    <br></br>
+   
     <select
                 value={freeDay}
                 onChange={e => setFreeDay(e.target.value)}
             >{renderDaysOptions()}
             </select>
       
-    <br></br>
-    <br></br>
+    
 </div>
-            <h2 className='h2_adj'>Vacantion</h2>
+            <h3 className='h3_adj'>Vacantion</h3>
             <div className='datesgrid'>
             <div className= 'vacDate'>
             <input
@@ -95,6 +96,7 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
                 onChange={e => setVactionFrom(e.target.value)}
             />
             </div>
+            <h3>-</h3>
             <div className= 'vacDate'>
             <input
                 type='date'
@@ -105,12 +107,12 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
             </div>
        </div>
        <br></br>
-       <br></br>
-       <h2 className='h2_adj'>Appointment Settings</h2>
+   
+       <h3 className='h3_adj'>Appointment Settings</h3>
 
             <div className='appoint'>
             <div className= 'appoint_thing'>
-            <h3>Face to Face</h3>
+            <h4>Face to Face</h4>
             </div>
             <div className= 'appoint_thing'>
             <input
@@ -119,12 +121,14 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
                 min={5}
                 value={durationOne}
                 onChange={e => setDurationOne(e.target.value)}
+                style={{width: "50px"}}
+
             />
             </div>
        </div>
        <div className='appoint'>
             <div className= 'appoint_thing'>
-            <h3>Zoom</h3>
+            <h4>Zoom</h4>
             </div>
             <div className= 'appoint_thing'>
             <input
@@ -134,13 +138,15 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
 
                 value={durationTwo}
                 onChange={e => setDurationTwo(e.target.value)}
+                style={{width: "50px"}}
+
             />
             </div>
        </div>
        <br></br>
-       <div className="btn-group-dash">
-                <button onClick={handleSaveClicked}>Save</button>
-                <button onClick={handleCancelClicked}>Cancel</button>
+       <div className="btn-group-adj">
+                <button className='adj_btn' onClick={handleSaveClicked}>Save</button>
+                <button className='adj_btn' onClick={handleCancelClicked}>Cancel</button>
             </div>
     </div>
   );
