@@ -5,15 +5,30 @@ import TableHead from "./TableHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, where, query } from "firebase/firestore";
 import "../index.css";
 
 
 const Table = () => {
   const [user, loading] = useAuthState(auth);
+  const [Temp_isdoctor,setIsDoctor] = useState([]);
   const navigate = useNavigate();
   const [tableData, setTableData] = useState([]);
   const [counter, setCounter] = useState(0);
+
+  const fetchUserName = async () => {
+    const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+    const doc = await getDocs(q);
+    const data = doc.docs[0].data();
+    setIsDoctor(data.isdoctor);
+    };
+
+    useEffect(() => {
+      if (loading) return;
+      if (!user) return navigate("/login");
+      if(user && user.email == "donacontactmail@gmail.com") return navigate("/Adminpanel");
+      fetchUserName();
+    }, [user, loading]);
  
   const getAllDocs = async () => 
   {
@@ -40,12 +55,6 @@ const Table = () => {
   useEffect( () => {
     getAllDocs().then(res => setTableData(res));
    }, [])
-
-  useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate("/login");
-    if(user && user.email == "donacontactmail@gmail.com") return navigate("/Adminpanel");
-  }, [user, loading]);
 
 
   const columns = [
@@ -78,9 +87,6 @@ const Table = () => {
     // let dataCopy=Table().tableData;
     // console.log(dataCopy[1].did);
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
 
 
 
@@ -110,19 +116,37 @@ const Table = () => {
     );
   };
 
-  return (
-    <>
-    <br></br>
-    <h1 className="MeetingsCounter">Meetings: {counter.toString()}</h1>
-    <br></br>
-      <h2 className="MeetingsCounter">{DownloadAtt()}</h2>
+  
+  if(Temp_isdoctor == "1")
+  {
+    return (
+      <>
       <br></br>
-      <table className="table">
-        <TableHead {...{ columns, handleSorting }} />
-        <TableBody {...{ columns, tableData }} />
-      </table>
-    </>
-  );
+      <h1 className="MeetingsCounter">Meetings: {counter.toString()}</h1>
+      <br></br>
+        <h2 className="MeetingsCounter">{DownloadAtt()}</h2>
+        <br></br>
+        <table className="table">
+          <TableHead {...{ columns, handleSorting }} />
+          <TableBody {...{ columns, tableData }} />
+        </table>
+      </>
+    );
+  }
+  else
+  {
+    return (
+      <>
+      <br></br>
+      <h1 className="MeetingsCounter">Meetings: {counter.toString()}</h1>
+        <br></br>
+        <table className="table">
+          <TableHead {...{ columns, handleSorting }} />
+          <TableBody {...{ columns, tableData }} />
+        </table>
+      </>
+    );
+  }
 };
 
 export default Table;
