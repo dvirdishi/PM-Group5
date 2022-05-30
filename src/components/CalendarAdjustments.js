@@ -6,14 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { auth, db} from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import "../index.css";
+
 function CalendarAdjustments() {
     const [editMode, setEditMode] = useState(false);
-    const [Workdays, setWorkDays] = useState([]);
+    const [freeDay, setFreeDay] = useState([]);
     const [VactionFrom, setVactionFrom] = useState([]);
     const [VactionUntil, setVactionUntil] = useState([]);
     const [durationOne, setDurationOne] = useState([]);
     const [durationTwo, setDurationTwo] = useState([]);
-    const stored = {Workdays, VactionFrom, VactionUntil, durationOne, durationTwo};
+    const stored = {freeDay, VactionFrom, VactionUntil, durationOne, durationTwo};
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ function CalendarAdjustments() {
     const q = query(collection(db, "doctor_settings"), where("uid", "==", user?.uid));
     const doc = await getDocs(q);
     const data = doc.docs[0].data();
-    setWorkDays(data.workdays);
+    setFreeDay(data.free_day);
     setVactionFrom(data.vaction_from);
     setVactionUntil(data.vaction_until);
     setDurationOne(data.duration_one);
@@ -39,7 +40,7 @@ function CalendarAdjustments() {
     function handleEditComplete(result) {
         console.log("handleEditComplete", result);
         if (result != null) {
-            setWorkDays(result.Workdays);
+            setFreeDay(result.freeDay);
             setVactionFrom(result.VactionFrom);
             setVactionUntil(result.VactionUntil);
             setDurationOne(result.durationOne);

@@ -1,26 +1,17 @@
 //for page
 import React from 'react';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import months from '../months';
+
 
 
 export default function CalendarAdjustments({stored, startEditCallback }) {
 
     return(
         <div className= 'adj'>
-        <h2 className='h2_adj'>Workdays</h2>
+        <h2 className='h2_adj'>Day-off</h2>
         <div className= 'workdays'>
         <br></br>
-        <FormGroup aria-label="position" row>
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Sunday" labelPlacement="top" />
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Monday" labelPlacement="top" />
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Tuesday" labelPlacement="top" />
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Wednesday" labelPlacement="top" />
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Thursday" labelPlacement="top" />
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Friday" labelPlacement="top" />
-         <FormControlLabel disabled sx={{ display:'grid-inline' }} control={<Checkbox  />} label="Saturday" labelPlacement="top" />
-        </FormGroup>
+        {months.getFullDays(stored.freeDay)}
         <br></br>
         <br></br>
     </div>
@@ -69,7 +60,7 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
        </div>
        <br></br>
     <div>
-        <button_dash onClick={startEditCallback} >Edit</button_dash>
+        <button onClick={startEditCallback} >Edit</button>
     </div>   
     </div>  
     );

@@ -175,9 +175,9 @@ const DoctorSettings = async (uid) => {
   try {
     await setDoc(doc(db, "doctor_settings", uid), {
       uid,
-      workdays: [false,false,false,false,false,false,false],//7 days
-      vaction_from: Timestamp.fromDate(new Date()),//date
-      vaction_until: Timestamp.fromDate(new Date()),// date
+      free_day: "Sunday",
+      vaction_from: fromDate(new Date()),//date
+      vaction_until: fromDate(new Date()),// date
       duration_one: 10,// number (minutes)
       duration_two: 10// number minutes
     });
