@@ -344,51 +344,50 @@ button_dash:hover {
 /* //////////////calendarAdjustments/////////////// */
 div.adj {
   vertical-align: center;
-
   margin: 0.5em;
   height: 32px;
   background-color: white;
   padding: 30px;
+  padding-bottom:50px ;
   margin: auto;
   margin-top: 15px;
+  margin-bottom:300px ;
   width: 90%;
   height: 95%;
   border-radius: 1em;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.205);
 }
 div.workdays{
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 15px;
+  margin-bottom: 30px;
   display: grid;
   justify-content: center;
-  align-content: center;
-
-  gap: 35px;
-  grid-auto-flow: column;
 
 }
-div.work_hours{
+
+button.adj_btn{
+  border: 1px solid darkgray;
+  background-color: lightblue;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 4px;
+  padding: 8px 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.205);
+}
+
+.adj_btn:hover {
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+}
+div.btn-group-adj {
   padding: 15px;
   display: grid;
   justify-content: center;
-  place-items: center;
-  align-content: center;
-  gap: 65px;
+  gap: 15px;
   grid-auto-flow: column;
 }
 
-
-
-div.timeBox{
-  display: grid;
- 
-  gap: 65px;
-  align-items: center;
-  justify-items: center;
-  flex-direction: column;
-
-}
-h2.h2_adj{
+h3.h3_adj{
 text-align: center;}
 
 div.vacDate{
