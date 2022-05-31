@@ -58,8 +58,8 @@ const Table = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: "did", sortable: true },
-    { label: "Client's Name", accessor: "cid", sortable: true },
+    { label: "Doctor's Name", accessor: "dname", sortable: true },
+    { label: "Client's Name", accessor: "cname", sortable: true },
     { label: "Date", accessor: "date", sortable: true },
     { label: "Hour", accessor: "hour", sortable: true },
     { label: "Duration", accessor: "duration", sortable: true },
@@ -85,13 +85,15 @@ const Table = () => {
 
   const DownloadAtt = () => {
     var today = new Date();
+    let Sentence;
     const downloadTxtFile = () => {
       let TodayClients="Clients Of Today's List:\n";
 
       for (let i = 0; i < tableData.length; i++) {
         if(tableData[i].date==today.toDateString())
         {
-          TodayClients += tableData[i].did + "\n";
+          Sentence = "ID:" + tableData[i].cid + " | Name:" + tableData[i].cname + " | Hour:" + tableData[i].hour + "\n";
+          TodayClients += Sentence;
         }
       }
       const element = document.createElement("a");

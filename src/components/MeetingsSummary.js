@@ -42,8 +42,8 @@ const MeetingsSummary = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: "did", sortable: true },
-    { label: "Client's Name", accessor: "cid", sortable: true },
+    { label: "Doctor's Name", accessor: "dname", sortable: true },
+    { label: "Client's Name", accessor: "cname", sortable: true },
     { label: "Date", accessor: "date", sortable: true },
     { label: "Meeting Summary", accessor: "summary", sortable: true },
     { label: "Edit Summary", accessor: "summary_button", sortable: false },

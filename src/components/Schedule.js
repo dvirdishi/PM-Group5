@@ -83,7 +83,7 @@ export default function Schedule() {
         let flag = 0;
         for(i =0;i<MyData.length;i++)
         {
-            if(bookingDate.toDateString() == MyData[i].date && MyData[i].did == tempid)
+            if(bookingDate.toDateString() == MyData[i].date && MyData[i].did == tempid && selectedTimeSlot == MyData[i].hour)
             {
                 alert("You Already Have A Meeting In That Date.");
                 flag = 1;
@@ -92,7 +92,7 @@ export default function Schedule() {
         ///////////////////////////
         for(i =0;i<OthersData.length;i++)
         {
-            if(bookingDate.toDateString() == OthersData[i].date && OthersData[i].did == tempid)
+            if(bookingDate.toDateString() == OthersData[i].date && OthersData[i].did == tempid && selectedTimeSlot == OthersData[i].hour)
             {
                 alert("Someone Already Have A Meeting In That Date.");
                 flag = 1;
