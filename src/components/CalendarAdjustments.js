@@ -25,8 +25,8 @@ function CalendarAdjustments() {
     const doc = await getDocs(q);
     const data = doc.docs[0].data();
     setFreeDay(data.free_day);
-    setVactionFrom(data.vaction_from);
-    setVactionUntil(data.vaction_until);
+    setVactionFrom(data?.vaction_from);
+    setVactionUntil(data?.vaction_until);
     setDurationOne(data.duration_one);
     setDurationTwo(data.duration_two);
     };
@@ -42,8 +42,8 @@ function CalendarAdjustments() {
         console.log("handleEditComplete", result);
         if (result != null) {
             setFreeDay(result.freeDay);
-            setVactionFrom(result.VactionFrom);
-            setVactionUntil(result.VactionUntil);
+            setVactionFrom(result?.VactionFrom);
+            setVactionUntil(result?.VactionUntil);
             setDurationOne(result.durationOne);
             setDurationTwo(result.durationTwo);
         }

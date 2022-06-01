@@ -16,8 +16,7 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
             <div className='datesgrid'>
             <div className= 'vacDate'>
             <input readOnly
-                type='date'
-                value={stored.VactionFrom}
+                value={stored?.VactionFrom}
                 
             />
             
@@ -26,8 +25,7 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
             <h3>-</h3>
             <div className= 'vacDate'>
             <input readOnly
-                type='date'
-                value={stored.VactionUntil}
+                value={stored?.VactionUntil}
             />
             </div>
        </div>

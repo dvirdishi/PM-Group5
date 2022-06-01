@@ -48,9 +48,9 @@ const signInWithGoogle = async () => {
         name: user.displayName,
         authProvider: "google",
         email: user.email,
-        day: defaultBirthday.getDate(),
-        month: defaultBirthday.getMonth(),
-        year: defaultBirthday.getFullYear(),
+        day: defaultBirthday?.getDate(),
+        month: defaultBirthday?.getMonth(),
+        year: defaultBirthday?.getFullYear(),
         speciality: "Empty",
         treatment: "Empty",
         private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
@@ -205,10 +205,10 @@ const DoctorSettings = async (uid) => {
     await setDoc(doc(db, "doctor_settings", uid), {
       uid,
       free_day:'3',
-      vaction_from:Date(),//date
-      vaction_until: Date(),// date
-      duration_one: 10,// number (minutes)
-      duration_two: 10// number minutes
+      vaction_from: null,
+      vaction_until: null,
+      duration_one: 10,
+      duration_two: 10
     });
   } catch (err) {
     console.error(err);

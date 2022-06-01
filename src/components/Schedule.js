@@ -32,8 +32,8 @@ let TypeEnable=1;
 export default function Schedule() {
     const [DoctorZoom, setZoomDuration] = useState([]);
     const [DoctorFaceToFace, setFacetofaceDuration] = useState([]);
-    const [VactionFrom, setVactionFrom] = useState([]);
-    const [VactionUntil, setVactionUntil] = useState([]);
+    // const [VactionFrom, setVactionFrom] = useState([]);
+    // const [VactionUntil, setVactionUntil] = useState([]);
     const [MyData, setMyData] = useState([]);
     const [OthersData, setOthersData] = useState([]);
     const [bookingDate, setBookingDate] = useState(null);
@@ -49,10 +49,10 @@ export default function Schedule() {
         const q = query(collection(db, "doctor_settings"), where("uid", "==", tempid));
         const doc = await getDocs(q);
         const data = doc.docs[0].data();
-        setZoomDuration(data.duration_two);
-        setFacetofaceDuration(data.duration_one);
-        setVactionFrom(data.vaction_from);
-        setVactionUntil(data.vaction_until);
+        setZoomDuration(data?.duration_two);
+        setFacetofaceDuration(data?.duration_one);
+        // setVactionFrom(data?.vaction_from);
+        // setVactionUntil(data?.vaction_until);
         };
 
     useEffect(() => {
