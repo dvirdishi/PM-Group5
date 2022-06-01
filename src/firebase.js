@@ -205,8 +205,8 @@ const DoctorSettings = async (uid) => {
     await setDoc(doc(db, "doctor_settings", uid), {
       uid,
       free_day:'3',
-      vaction_from:"yyyy-mm-dd",//date
-      vaction_until: "yyyy-mm-dd",// date
+      vaction_from:Date(),//date
+      vaction_until: Date(),// date
       duration_one: 10,// number (minutes)
       duration_two: 10// number minutes
     });

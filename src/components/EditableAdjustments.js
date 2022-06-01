@@ -49,8 +49,8 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
           await updateDoc(ref, 
             {
                 free_day:freeDay,
-                vaction_from:VactionFrom,
-                vaction_until:VactionUntil,
+                vaction_from:VactionFrom.toDateString(),
+                vaction_until:VactionUntil.toDateString(),
                 duration_one: durationOne,
                 duration_two:durationTwo,
           });
@@ -119,6 +119,7 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
                 type='number'
                 placeholder='Duration'
                 min={0}
+                max={30}
                 value={durationOne}
                 onChange={e => setDurationOne(e.target.value)}
                 style={{width: "50px"}}
@@ -134,6 +135,7 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
             <input
                 type='number'
                 min={0}
+                max={30}
                 placeholder='Duration'
 
                 value={durationTwo}

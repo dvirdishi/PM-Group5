@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
 import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { query, collection, getDocs, where } from "firebase/firestore";
 
 let ButEnable=1;
 let TypeEnable=1;
@@ -13,12 +13,15 @@ let TypeEnable=1;
     var today = new Date();//Current date variable
 
     let times = [
-        "08:00 - 08:30",
-        "09:00 - 09:30",
-        "10:00 - 10:30",
-        "11:00 - 11:30",
-        "12:00 - 12:30",
-        "13:00 - 13:30",
+        "08:00",
+        "08:30",
+        "09:00",
+        "09:30",
+        "10:00",
+        "10:30",
+        "11:00",
+        "11:30",
+        "12:00",
     ];
 
 
@@ -27,6 +30,10 @@ let TypeEnable=1;
     };
 
 export default function Schedule() {
+    const [DoctorZoom, setZoomDuration] = useState([]);
+    const [DoctorFaceToFace, setFacetofaceDuration] = useState([]);
+    const [VactionFrom, setVactionFrom] = useState([]);
+    const [VactionUntil, setVactionUntil] = useState([]);
     const [MyData, setMyData] = useState([]);
     const [OthersData, setOthersData] = useState([]);
     const [bookingDate, setBookingDate] = useState(null);
@@ -38,6 +45,23 @@ export default function Schedule() {
     const navigate = useNavigate();
     const {tempid} = useParams();
 
+    const fetchDoctorSettings = async () => {
+        const q = query(collection(db, "doctor_settings"), where("uid", "==", tempid));
+        const doc = await getDocs(q);
+        const data = doc.docs[0].data();
+        setZoomDuration(data.duration_two);
+        setFacetofaceDuration(data.duration_one);
+        setVactionFrom(data.vaction_from);
+        setVactionUntil(data.vaction_until);
+        };
+
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return navigate("/login");
+        fetchDoctorSettings();
+    }, [user, loading]);
+
+    
     const GetOthersData = async () => 
   {
       const querySnapshot = await getDocs(collection(db, "appointments"));
@@ -81,6 +105,16 @@ export default function Schedule() {
     const Meeting = () => {
         let i =0;
         let flag = 0;
+        if(selectedTypeSlot == "Zoom" && DoctorZoom == 0)
+        {
+            alert("This Doctor Doesnt Have This Kind Of Meeting (Zoom).");
+            flag = 1;
+        }
+        if(selectedTypeSlot == "FaceToFace" && DoctorFaceToFace == 0)
+        {
+            alert("This Doctor Doesnt Have This Kind Of Meeting (Face To Face).");
+            flag = 1;
+        }
         for(i =0;i<MyData.length;i++)
         {
             if(bookingDate.toDateString() == MyData[i].date && MyData[i].did == tempid && selectedTimeSlot == MyData[i].hour)
@@ -99,17 +133,17 @@ export default function Schedule() {
             }
         }
         ///////////////////////////
-        if(flag == 0)
+        if(flag == 0 && selectedTypeSlot == "Zoom")
         {
-            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,"30 Minutes",selectedTypeSlot);
+            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,DoctorZoom,selectedTypeSlot);
+            navigate("/");
+        }
+        else if(flag == 0 && selectedTypeSlot == "FaceToFace")
+        {
+            NewAppointment(tempid,user.uid,bookingDate.toDateString(),selectedTimeSlot,DoctorFaceToFace,selectedTypeSlot);
             navigate("/");
         }
     };
-
-    useEffect(() => {
-        if (loading) return;
-        if (!user) return navigate("/login");
-    }, [user, loading]);
 
     useEffect(() => {
         // Bail out if there is no date selected
