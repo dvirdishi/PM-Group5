@@ -50,7 +50,7 @@ export default function Homepage() {
                 <div className='banner-img'></div>
                 <img src={Doctor} alt='profile image' className="profile-img"></img>
                 <h1 className="name">{doc.name}</h1>
-                <p className="description">Hi there! My name is XXXX and I am a book lover, traveler and professional blogger. Follow me to stay connected!</p>
+                <p className="description">Speciality: {doc.speciality} <br></br> Treatment: {doc.treatment} <br></br> Address: {doc.address}</p>
                 <Link to={"/Schedule/"+ doc.uid}>
                 <button className='button'>Schedule Meeting</button>
                 </Link>
