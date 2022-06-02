@@ -16,7 +16,7 @@ export default function FilterCity() {
         let tempData = []
         querySnapshot.forEach((doc) => {
             tempData.push(doc.data());
-            tempData[i].id = doc.data().id;
+            tempData[i].id = doc.id;
         i++;
         });
         return tempData;

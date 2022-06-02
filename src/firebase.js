@@ -170,6 +170,7 @@ const NewAppointment = async (did,cid,date,hour,duration,type) => {
 const NewSummary = async (uid,did,cid,date,x,y) => {
   try {
     await setDoc(doc(db, "summaries", uid), {
+      uid,
       dname: x,
       cname: y,
       did,

@@ -85,9 +85,10 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
     if(stored.isdoctor==1){
     return (<div>
         <div>
-        <h1_dash>Account Settings</h1_dash>
+        <h1 className="h1_dash">Account Settings</h1>
         <Group>
-            <h2_dash>Name:</h2_dash>
+
+            <h2 className="h2_dash">Name:</h2>
             <input
                 type='text'
                 value={nameos}
@@ -96,7 +97,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
         </Group>
 
         <Group>
-            <h2_dash>Birthday:</h2_dash>
+            <h2 className="h2_dash">Birthday:</h2>
 
             <select
                 value={month}
@@ -118,7 +119,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             />
         </Group>
         <Group>
-            <h2_dash>Email:</h2_dash>
+            <h2 className="h2_dash">Email:</h2>
             <input
                 type='text'
                 value={email}
@@ -126,7 +127,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             />
         </Group>
         <Group>
-            <h2_dash>Private Phone:</h2_dash>
+            <h2 className="h2_dash">Private Phone:</h2>
             <input
                 type='text'
                 value={private_phone}
@@ -136,9 +137,9 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
         </div>
 <br></br>
         <div>
-        <h1_dash>Clinic Settings</h1_dash>
+        <h1 className="h1_dash">Clinic Settings</h1>
         <Group>
-            <h2_dash>Address:</h2_dash>
+            <h2 className="h2_dash">Address:</h2>
             <input
                 type='text'
                 value={address}
@@ -146,7 +147,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             />
         </Group>
         <Group>
-            <h2_dash>Clinic Phone:</h2_dash>
+            <h2 className="h2_dash">Clinic Phone:</h2>
             <input
                 type='text'
                 value={clinic_phone}
@@ -154,7 +155,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             />
         </Group>
         <Group>
-            <h2_dash>Speciality:</h2_dash>
+            <h2 className="h2_dash">Speciality:</h2>
             <input
                 type='text'
                 value={speciality}
@@ -162,7 +163,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             />
         </Group>
         <Group>
-            <h2_dash>Treatment:</h2_dash>
+            <h2 className="h2_dash">Treatment:</h2>
             <input
                 type='text'
                 value={treatment}
@@ -180,9 +181,9 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
     if(stored.isdoctor==0){
         return (<div>
             <div>
-            <h1_dash>Account Settings</h1_dash>
+            <h1 className="h1_dash">Account Settings</h1>
             <Group>
-                <h2_dash>Name:</h2_dash>
+                <h2 className="h2_dash">Name:</h2>
                 <input
                     type='text'
                     value={nameos}
@@ -191,7 +192,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
             </Group>
     
             <Group>
-                <h2_dash>Birthday:</h2_dash>
+                <h2 className="h2_dash">Birthday:</h2>
     
                 <select
                     value={month}
@@ -213,7 +214,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
                 />
             </Group>
             <Group>
-                <h2_dash>Email:</h2_dash>
+                <h2 className="h2_dash">Email:</h2>
                 <input
                     type='text'
                     value={email}
@@ -221,7 +222,7 @@ export default function EditableUserProfile({stored,editCompleteCallback}) {
                 />
             </Group>
             <Group>
-                <h2_dash>Private Phone:</h2_dash>
+                <h2 className="h2_dash">Private Phone:</h2>
                 <input
                     type='text'
                     value={private_phone}

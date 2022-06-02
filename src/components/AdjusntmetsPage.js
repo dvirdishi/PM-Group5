@@ -10,14 +10,13 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
             <br></br>
         <h3 className='h3_adj'>Day-off</h3>
         <div className= 'workdays'>
-        {months.getFullDays(stored.freeDay)}
+        {months.getFullDays(stored?.freeDay)}
     </div>
             <h3 className='h3_adj'>Vacantion</h3>
             <div className='datesgrid'>
             <div className= 'vacDate'>
             <input readOnly
                 value={stored?.VactionFrom}
-                
             />
             
 
@@ -40,7 +39,7 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
             <input readOnly
                 type='number'
                 placeholder='Duration'
-                value={stored.durationOne}
+                value={stored?.durationOne}
                 style={{width: "50px"}}
 
             />
@@ -54,7 +53,7 @@ export default function CalendarAdjustments({stored, startEditCallback }) {
             <input readOnly
                 type='number'
                 placeholder='Duration'
-                value={stored.durationTwo}
+                value={stored?.durationTwo}
                 style={{width: "50px"}}
 
             />

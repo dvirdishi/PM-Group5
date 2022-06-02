@@ -22,8 +22,9 @@ const TableDoctors = () => {
         if(doc.data().isdoctor == "1")
         {
           tempData.push(doc.data());
+          tempData[i].id = doc.id;
+          i++;
         }
-      i++;
       });
       return tempData;
   }

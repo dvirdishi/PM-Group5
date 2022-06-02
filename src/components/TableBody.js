@@ -11,7 +11,7 @@ const TableBody = ({ tableData, columns }) => {
       <tbody>
         {tableData.map((data) => {
             const updateDocument_edit = () => {
-              navigate("/ScheduleEdit/"+ data.id);
+              navigate("/ScheduleEdit/"+ data.id + "/" + data.did);
             };
             const updateDocument_delete = async () => 
             {
@@ -40,7 +40,7 @@ const TableBody = ({ tableData, columns }) => {
                   {
                     return <div>
                       <button className="button_cancel" key={accessor} onClick={updateDocument_delete}>Delete</button>;
-                      <button className="button_edit" key={accessor} onClick={updateDocument_edit}>Edit</button>;
+                      <button className="button_edit" key={accessor + "1"} onClick={updateDocument_edit}>Edit</button>;
                     </div>
                   }
                   if(accessor == "date" && Date.parse(data[accessor]) < Date.parse(today))

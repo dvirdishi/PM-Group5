@@ -46,7 +46,7 @@ function App()
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/profile" element={<User />} />
                     <Route path="/Schedule/:tempid" element={<Schedule />} />
-                    <Route path="/ScheduleEdit/:tempid" element={<ScheduleEdit />} />
+                    <Route path="/ScheduleEdit/:tempid/:tempid2" element={<ScheduleEdit />} />
                     <Route path="/About" element={<About />} />
                     <Route path="/Policy" element={<Policy />} />
                     <Route path="/contact" element={<Mail />} />

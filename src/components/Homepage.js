@@ -21,7 +21,7 @@ export default function Homepage() {
         let tempData = []
         querySnapshot.forEach((doc) => {
             tempData.push(doc.data());
-            tempData[i].uid = doc.data().uid;
+            tempData[i].id = doc.id;
         i++;
         });
         return tempData;

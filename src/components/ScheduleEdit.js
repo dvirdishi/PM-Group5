@@ -3,8 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { query, collection, getDocs, where, doc, updateDoc } from "firebase/firestore";
+import 'firebase/compat/firestore';
 
 let ButEnable=1;
 let TypeEnable=1;
@@ -29,6 +30,12 @@ let TypeEnable=1;
     };
 
 export default function ScheduleEdit() {
+    const [DoctorZoom, setZoomDuration] = useState([]);
+    const [DoctorFaceToFace, setFacetofaceDuration] = useState([]);
+    const [VactionFrom, setVactionFrom] = useState([]);
+    const [VactionUntil, setVactionUntil] = useState([]);
+    const [MyData, setMyData] = useState([]);
+    const [OthersData, setOthersData] = useState([]);
     const [bookingDate, setBookingDate] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const [selectedTypeSlot, setSelectedTypeSlot] = useState(null);
@@ -37,32 +44,154 @@ export default function ScheduleEdit() {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     const {tempid} = useParams();
+    const {tempid2} = useParams();
 
-    const updateDocument_edit = async () => 
-          {
-              {
-                const ref = doc(db, "appointments", tempid);
-                await updateDoc(ref, 
-                  {
-                    date: bookingDate.toDateString(),
-                    hour: selectedTimeSlot,
-                    type: selectedTypeSlot,
-                });
-                const ref2 = doc(db, "summaries", tempid);
-                await updateDoc(ref2, 
-                  {
-                    date: bookingDate.toDateString(),
-                });
-              }
-              alert("Meeting Edited.");
-              navigate("/");
-            }
-
-
+    const fetchDoctorSettings = async () => {
+       const q = query(collection(db, "doctor_settings"), where("uid", "==", tempid2));
+       const doc = await getDocs(q);
+       const data = doc.docs[0].data();
+       setZoomDuration(data.duration_two);
+       setFacetofaceDuration(data.duration_one);
+       setVactionFrom(data.vaction_from);
+       setVactionUntil(data.vaction_until);
+    };
+    
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate("/login");
+        fetchDoctorSettings();
+        console.log("Appo ID: "+ tempid);
+        console.log("Doctor ID: "+ tempid2);
     }, [user, loading]);
+
+    const GetOthersData = async () => 
+    {
+        const querySnapshot = await getDocs(collection(db, "appointments"));
+        let i = 0;
+        let tempData = []
+        querySnapshot.forEach((doc) => {
+          if(user.uid != doc.data().cid && user.uid != doc.data().did)
+          {
+            tempData.push(doc.data());
+            tempData[i].id = doc.id;
+            i++;
+          }
+        });
+        return tempData;
+    }
+  
+    useEffect( () => {
+      GetOthersData().then(res => setOthersData(res));
+     }, [])
+  
+    const GetMyMeetings = async () => 
+    {
+        const querySnapshot = await getDocs(collection(db, "appointments"));
+        let i = 0;
+        let tempData = []
+        querySnapshot.forEach((doc) => {
+          if(user.uid == doc.data().cid || user.uid == doc.data().did)
+          {
+            tempData.push(doc.data());
+            tempData[i].id = doc.id;
+            i++;
+          }
+        });
+        return tempData;
+    }
+  
+    useEffect( () => {
+      GetMyMeetings().then(res => setMyData(res));
+     }, [])
+
+    const updateDocument_edit = async () => {
+            let i =0;
+            let flag = 0;
+            ///////////////////////////
+            console.log("DoctorZoom: " + DoctorZoom);
+            console.log("selectedTypeSlot: " + selectedTypeSlot);
+            if(selectedTypeSlot == "Zoom" && DoctorZoom == 0)
+            {
+                alert("This Doctor Doesnt Have This Kind Of Meeting (Zoom).");
+                flag = 1;
+            }
+            ///////////////////////////
+            else if(selectedTypeSlot == "FaceToFace" && DoctorFaceToFace == 0)
+            {
+                alert("This Doctor Doesnt Have This Kind Of Meeting (Face To Face).");
+                flag = 1;
+            }
+            ///////////////////////////
+            for(i =0;i<MyData.length;i++)
+            {
+                if(bookingDate.toDateString() == MyData[i].date && MyData[i].did == tempid2 && selectedTimeSlot == MyData[i].hour)
+                {
+                    alert("You Already Have A Meeting In That Date.");
+                    flag = 1;
+                }
+            }
+            ///////////////////////////
+            for(i =0;i<OthersData.length;i++)
+            {
+                if(bookingDate.toDateString() == OthersData[i].date && OthersData[i].did == tempid2 && selectedTimeSlot == OthersData[i].hour)
+                {
+                    alert("Someone Already Have A Meeting In That Date.");
+                    flag = 1;
+                }
+            }
+            ///////////////////////////
+            if(Date.parse(bookingDate.toDateString()) >= Date.parse(VactionFrom) && Date.parse(bookingDate.toDateString()) <= Date.parse(VactionUntil))
+            {
+                alert("The Doctor Is On Vaction, Please Choose Another Date. " + "\n" + "(" + VactionFrom + " - " + VactionUntil +")");
+                flag =1;
+            }
+            ///////////////////////////
+            if(flag == 0 && selectedTypeSlot == "Zoom")
+            {
+                {
+                    const ref = doc(db, "appointments", tempid);
+                    //const ref = query(collection(db, "appointments"), where("uid", "==", tempid));
+                    console.log("ref:" + ref);
+                    await updateDoc(ref, 
+                      {
+                        date: bookingDate.toDateString(),
+                        hour: selectedTimeSlot,
+                        type: selectedTypeSlot,
+                        duration_two: DoctorZoom,
+                    });
+                    const ref2 = doc(db, "summaries", tempid);
+                    //const ref2 = query(collection(db, "summaries"), where("uid", "==", tempid));
+                    console.log("ref2:" + ref2);
+                    await updateDoc(ref2, 
+                      {
+                        date: bookingDate.toDateString(),
+                    });
+                  }
+                  alert("Meeting Edited.");
+                  navigate("/");
+            }
+            else if(flag == 0 && selectedTypeSlot == "FaceToFace")
+            {
+                {
+                    const ref = doc(db, "appointments", tempid);
+                    console.log("ref:" + ref);
+                    await updateDoc(ref, 
+                      {
+                        date: bookingDate.toDateString(),
+                        hour: selectedTimeSlot,
+                        type: selectedTypeSlot,
+                        duration_one: DoctorFaceToFace,
+                    });
+                    const ref2 = doc(db, "summaries", tempid);
+                    await updateDoc(ref2, 
+                      {
+                        date: bookingDate.toDateString(),
+                    });
+                  }
+                  alert("Meeting Edited.");
+                  navigate("/");
+            }
+    };
 
     useEffect(() => {
         // Bail out if there is no date selected

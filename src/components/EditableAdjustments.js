@@ -31,7 +31,25 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
     const [durationTwo, setDurationTwo] = useState(stored.durationTwo);
     const [VactionFrom, setVactionFrom] = useState(null);
     const [VactionUntil, setVactionUntil] = useState(null);
+    const [t_vactionfrom, setT_vactionfrom] = useState(stored.VactionFrom);
+    const [t_vacationuntil, setT_vacationuntil] = useState(stored.VactionUntil);
     const [user, loading] = useAuthState(auth);
+    
+    const updateCustomDocument = async () => 
+    {
+        {
+          const ref = doc(db, "doctor_settings", user.uid);
+          await updateDoc(ref, 
+            {
+                free_day:freeDay,
+                vaction_from: t_vactionfrom,
+                vaction_until: t_vacationuntil,
+                duration_one: durationOne,
+                duration_two:durationTwo,
+          });
+        }
+        window.location.reload(false);
+    }
 
     const updateDocument = async () => 
     {
@@ -41,14 +59,15 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
             {
                 free_day:freeDay,
                 vaction_from: VactionFrom.toDateString(),
-                vaction_until:VactionUntil.toDateString(),
+                vaction_until: VactionUntil.toDateString(),
                 duration_one: durationOne,
                 duration_two:durationTwo,
           });
         }
         window.location.reload(false);
-      }
-      function handleCancelClicked() {
+    }
+
+    function handleCancelClicked() {
         console.log("Cancelled");
         editCompleteCallback(null);
     }
@@ -56,6 +75,11 @@ function CalendarAdjustments({stored,editCompleteCallback}) {
         if(Date.parse(VactionUntil) < Date.parse(VactionFrom))
         {
             alert("Wrong Date, Please Choose Until When You Want To Take A Vaction Agian." + "\n" + "Minimum Date: " + VactionFrom.toDateString());
+        }
+        else if(VactionUntil == null && VactionFrom == null)
+        {
+            updateCustomDocument();
+            editCompleteCallback({freeDay, t_vactionfrom, t_vacationuntil,durationOne, durationTwo});
         }
         else
         {
