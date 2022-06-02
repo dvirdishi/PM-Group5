@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams} from "react-router-dom";
 import { db } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import months from "../months";
 
 let ButEnable=1;
 let TypeEnable=1;
@@ -34,6 +35,7 @@ export default function Schedule() {
     const [DoctorFaceToFace, setFacetofaceDuration] = useState([]);
     const [VactionFrom, setVactionFrom] = useState([]);
     const [VactionUntil, setVactionUntil] = useState([]);
+    const [FreeDay, setFreeDay] = useState([]);
     const [MyData, setMyData] = useState([]);
     const [OthersData, setOthersData] = useState([]);
     const [bookingDate, setBookingDate] = useState(null);
@@ -54,6 +56,7 @@ export default function Schedule() {
         setFacetofaceDuration(data?.duration_one);
         setVactionFrom(data?.vaction_from);
         setVactionUntil(data?.vaction_until);
+        setFreeDay(data?.free_day);
         };
 
 
@@ -107,6 +110,14 @@ const GetOthersData = async () =>
     const Meeting = () => {
         let i =0;
         let flag = 0;
+        let day = months.getShortDays(FreeDay).toString();
+        let long_day = months.getFullDays(FreeDay).toString();
+        ///////////////////////////
+        if(bookingDate.toDateString().includes(day))
+        {
+            alert("The Doctor Doesnt Get Any Meetings In "+ long_day);
+            flag = 1;
+        }
         ///////////////////////////
         if(selectedTypeSlot == "Zoom" && DoctorZoom == 0)
         {
