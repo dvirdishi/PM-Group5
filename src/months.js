@@ -12,9 +12,21 @@ const months = [
     { shortName: "Nov", maxDays: 30},
     { shortName: "Dec", maxDays: 31}
 ];
+const days = [
+    { shortName: "Sun", fullName: "Sunday"},
+    { shortName: "Mon", fullName: "Monday"},
+    { shortName: "Tue", fullName: "Tuesday"},
+    { shortName: "Wed", fullName: "Wednesday"},
+    { shortName: "Thu", fullName: "Thursday"},
+    { shortName: "Fri", fullName: "Friday"},
+    { shortName: "Sat", fullName: "Saturday"}
+];
 
 export default {
     getShortName: i => months[i].shortName,
     getMaxDays: i => months[i].maxDays,
-    getMonths: () => months
+    getMonths: () => months,
+    getDays: () => days,
+    getFullDays: i => days[i]?.fullName,
+    getShortDays: i=> days[i]?.shortName,
 }

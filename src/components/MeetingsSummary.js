@@ -1,25 +1,26 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import TableDoctorBody from "./TableDoctorBody";
-import TableDoctorHead from "./TableDoctorHead";
+import MeetingsSummaryBody from "./MeetingsSummaryBody";
+import MeetingsSummaryHead from "./MeetingsSummaryHead";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../firebase";
+import { auth, db} from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "../index.css";
 
-const TableDoctors = () => {
-  const [tableData, setTableData] = useState([]);
+
+const MeetingsSummary = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-
+  const [tableData, setTableData] = useState([]);
+ 
   const getAllDocs = async () => 
   {
-      const querySnapshot = await getDocs(collection(db, "users"));
+      const querySnapshot = await getDocs(collection(db, "summaries"));
       let i = 0;
       let tempData = []
       querySnapshot.forEach((doc) => {
-        if(doc.data().isdoctor == "1")
+        if(user.uid == doc.data().cid || user.uid == doc.data().did)
         {
           tempData.push(doc.data());
           tempData[i].id = doc.id;
@@ -32,7 +33,7 @@ const TableDoctors = () => {
   useEffect( () => {
     getAllDocs().then(res => setTableData(res));
    }, [])
- 
+   
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/login");
@@ -41,14 +42,11 @@ const TableDoctors = () => {
 
 
   const columns = [
-    { label: "Doctor's Name", accessor: "name", sortable: true },
-    { label: "Email", accessor: "email", sortable: true },
-    { label: "Birthday(Month)", accessor: "month", sortable: true },
-    { label: "Speciality", accessor: "speciality", sortable: true },
-    { label: "Treatment", accessor: "treatment", sortable: true },
-    { label: "Private Phone", accessor: "private_phone", sortable: true },
-    { label: "Clinic Phone", accessor: "clinic_phone", sortable: true },
-    { label: "Clinic Address", accessor: "address", sortable: true },
+    { label: "Doctor's Name", accessor: "dname", sortable: true },
+    { label: "Client's Name", accessor: "cname", sortable: true },
+    { label: "Date", accessor: "date", sortable: true },
+    { label: "Meeting Summary", accessor: "summary", sortable: true },
+    { label: "Edit Summary", accessor: "summary_button", sortable: false },
   ];
 
   const handleSorting = (sortField, sortOrder) => {
@@ -70,12 +68,12 @@ const TableDoctors = () => {
   return (
     <>
     <br></br>
-      <table className="admin_table">
-        <TableDoctorHead {...{ columns, handleSorting }} />
-        <TableDoctorBody {...{ columns, tableData }} />
+      <table className="table">
+        <MeetingsSummaryHead {...{ columns, handleSorting }} />
+        <MeetingsSummaryBody {...{ columns, tableData }} />
       </table>
     </>
   );
 };
 
-export default TableDoctors;
+export default MeetingsSummary;

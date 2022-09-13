@@ -15,7 +15,7 @@ import {
   getDocs,
   collection,
   where,
-  doc, setDoc
+  doc, setDoc,addDoc, 
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -35,6 +35,7 @@ const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
 
+
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -47,23 +48,27 @@ const signInWithGoogle = async () => {
         name: user.displayName,
         authProvider: "google",
         email: user.email,
-        day: defaultBirthday.getDate(),
-        month: defaultBirthday.getMonth(),
-        year: defaultBirthday.getFullYear(),
+        day: defaultBirthday?.getDate(),
+        month: defaultBirthday?.getMonth(),
+        year: defaultBirthday?.getFullYear(),
         speciality: "Empty",
         treatment: "Empty",
         private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
       });
     }
     alert("Logged In Successfully!");
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
 };
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    alert("Logged In Successfully!");
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -89,6 +94,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       private_phone: "Empty", clinic_phone: "Empty", address: "Empty", isdoctor:"0",
     }));
     alert("User Added Successfully!");
+    window.location.reload(false);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -112,7 +118,68 @@ const registerNewDoctor = async (name, email, password, clinic_phone, speciality
       treatment,
       private_phone: "Empty", clinic_phone, address, isdoctor:"1",
     });
+    DoctorSettings(user.uid);
     auth.signOut();
+    window.location.reload(false);
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const fetchClientName = async (temp_cid) => {
+  const q = query(collection(db, "users"), where("uid", "==", temp_cid));
+  const doc = await getDocs(q);
+  const data = doc.docs[0].data();
+  return data.name;
+  };
+
+const fetchDoctorName = async (temp_did) => {
+  const q = query(collection(db, "users"), where("uid", "==", temp_did));
+  const doc = await getDocs(q);
+  const data = doc.docs[0].data();
+  return data.name;
+  };
+
+const NewAppointment = async (did,cid,date,hour,duration,type) => {
+  try {
+    const x =  await fetchDoctorName(did);
+    console.log("X:" + x);
+    const y =  await fetchClientName(cid);
+    console.log("Y:" + y);
+    const res2 = await addDoc(collection(db, "appointments"), {
+      dname: x,
+      cname: y,
+      did,
+      cid,
+      date,
+      hour,
+      duration,
+      type,
+      isdeleted: "0",
+      button: " ",
+    })
+    NewSummary(res2.id,did,cid,date,x,y);
+    alert("New Appointment Added Successfully!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const NewSummary = async (uid,did,cid,date,x,y) => {
+  try {
+    await setDoc(doc(db, "summaries", uid), {
+      uid,
+      dname: x,
+      cname: y,
+      did,
+      cid,
+      date,
+      summary: "Empty",
+      isdeleted: "0",
+      summary_button: " ",
+    });
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -131,7 +198,25 @@ const sendPasswordReset = async (email) => {
 
 const logout = () => {
   signOut(auth);
+  window.location.reload(false);
 };
+
+const DoctorSettings = async (uid) => {
+  try {
+    await setDoc(doc(db, "doctor_settings", uid), {
+      uid,
+      free_day:'3',
+      vaction_from: null,
+      vaction_until: null,
+      duration_one: 10,
+      duration_two: 10
+    });
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
 export {
   auth,
   db,
@@ -141,4 +226,7 @@ export {
   sendPasswordReset,
   logout,
   registerNewDoctor,
+  NewAppointment,
+  DoctorSettings,
+  NewSummary,
 };

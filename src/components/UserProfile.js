@@ -13,42 +13,42 @@ if(stored.isdoctor==1)
             return(
                 <div>
                 <div>
-                <h1_dash>Account Settings</h1_dash>
+                <h1 className="h1_dash">Account Settings</h1>
                 <Group>
-                    <h2_dash>Name:</h2_dash> {stored.nameos}
+                    <h2 className="h2_dash">Name:</h2> {stored.nameos}
                 </Group>
                 <Group>
-                    <h2_dash>Birthday:</h2_dash> {months.getShortName(stored.month)} {stored.day} {stored.year}
+                    <h2 className="h2_dash">Birthday:</h2> {months.getShortName(stored.month)} {stored.day} {stored.year}
                 </Group>
                 <Group>
-                    <h2_dash>Email:</h2_dash> {stored.email}
+                    <h2 className="h2_dash">Email:</h2> {stored.email}
                 </Group>
                 <Group>
-                    <h2_dash>Private Phone:</h2_dash> {stored.private_phone}
+                    <h2 className="h2_dash">Private Phone:</h2> {stored.private_phone}
                 </Group>
                 </div>
 
                 
                 
             <div>
-            <h1_dash>Clinic Settings</h1_dash>
+            <h1 className="h1_dash">Clinic Settings</h1>
             <Group>
-                <h2_dash>Address:</h2_dash> {stored.address}
+                <h2 className="h2_dash">Address:</h2> {stored.address}
             </Group>
             <Group>
-                <h2_dash>Clinic Phone:</h2_dash> {stored.clinic_phone}
+                <h2 className="h2_dash">Clinic Phone:</h2> {stored.clinic_phone}
             </Group>
             <Group>
-                <h2_dash>Speciality:</h2_dash> {stored.speciality}
+                <h2 className="h2_dash">Speciality:</h2> {stored.speciality}
             </Group>
             <Group>
-                <h2_dash>Treatment:</h2_dash> {stored.treatment}
+                <h2 className="h2_dash">Treatment:</h2> {stored.treatment}
             </Group>
         </div>
         <div>
-                <button_dash
+                <button className= "button_dash"
                     onClick={startEditCallback}
-                >Edit</button_dash>
+                >Edit</button>
             </div>
         </div>)
         }
@@ -56,26 +56,22 @@ if(stored.isdoctor==1)
 if(stored.isdoctor==0){
    return (<div>
         <div>
-        <h1_dash>Account Settings</h1_dash>
+        <h1 className="h1_dash">Account Settings</h1>
         <Group>
-            <h2_dash>Name:</h2_dash> {stored.nameos}
+            <h2 className="h2_dash">Name:</h2> {stored.nameos}
         </Group>
         <Group>
-            <h2_dash>Birthday:</h2_dash> {months.getShortName(stored.month)} {stored.day} {stored.year}
+            <h2 className="h2_dash">Birthday:</h2> {months.getShortName(stored.month)} {stored.day} {stored.year}
         </Group>
         <Group>
-            <h2_dash>Email:</h2_dash> {stored.email}
+            <h2 className="h2_dash">Email:</h2> {stored.email}
         </Group>
         <Group>
-            <h2_dash>Private Phone:</h2_dash> {stored.private_phone}
+            <h2 className="h2_dash">Private Phone:</h2> {stored.private_phone}
         </Group>
         </div>
-        
-        
         <div>
-                <button_dash
-                    onClick={startEditCallback}
-                >Edit</button_dash>
+                <button className= "button_dash" onClick={startEditCallback} >Edit</button>
             </div>
     </div>
         

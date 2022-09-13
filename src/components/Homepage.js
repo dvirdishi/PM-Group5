@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react"
 import Doctor from "../images/doctoricon.png"
 import {Link} from "react-router-dom";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Homepage() {
 
     const [data,setData] = useState([]);
+    const [user, loading] = useAuthState(auth);
+
+    useEffect(() => {
+        if (loading) return;
+    }, [user, loading]);
+
     const getAllDocs = async () => 
     {
         const querySnapshot = await getDocs(collection(db, "users"));
@@ -14,7 +21,7 @@ export default function Homepage() {
         let tempData = []
         querySnapshot.forEach((doc) => {
             tempData.push(doc.data());
-            tempData[i].uid = doc.data().uid;
+            tempData[i].id = doc.id;
         i++;
         });
         return tempData;
@@ -43,11 +50,10 @@ export default function Homepage() {
                 <div className='banner-img'></div>
                 <img src={Doctor} alt='profile image' className="profile-img"></img>
                 <h1 className="name">{doc.name}</h1>
-                <p className="description">Hi there! My name is XXXX and I am a book lover, traveler and professional blogger. Follow me to stay connected!</p>
-                <Link to="/Schedule">
-                    <button className='button'>Schedule Meeting</button>
+                <p className="description">Speciality: {doc.speciality} <br></br> Treatment: {doc.treatment} <br></br> Address: {doc.address}</p>
+                <Link to={"/Schedule/"+ doc.uid}>
+                <button className='button'>Schedule Meeting</button>
                 </Link>
-                
             </div> 
         ))}
         </div>
